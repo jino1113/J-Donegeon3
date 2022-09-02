@@ -107,6 +107,7 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
+                CurrentObject.freezeRotation = false;
                 CurrentObject = null;
                 return;
             }
@@ -115,6 +116,7 @@ public class ToolSwitch : MonoBehaviour
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
             {
                 CurrentObject = HitInfo.rigidbody;
+                CurrentObject.freezeRotation = true;
             }
         }
 
@@ -122,8 +124,10 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
+                CurrentObject.freezeRotation = false;
                 CurrentObject = null;
                 return;
+
             }
         }
     }

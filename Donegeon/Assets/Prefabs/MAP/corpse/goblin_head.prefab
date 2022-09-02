@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5683354860132183971}
   - component: {fileID: 1731041764492550282}
   - component: {fileID: 8065539892373703167}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: goblin_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

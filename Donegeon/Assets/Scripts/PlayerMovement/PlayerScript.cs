@@ -89,7 +89,7 @@ public class PlayerScript : MonoBehaviour
 
         //Calculate forces
         Vector3 velocityChange = (targetVelocity - currentVelocity);
-        velocityChange = new Vector3(velocityChange.x, -0.15f, velocityChange.z);
+        velocityChange = new Vector3(velocityChange.x, -0.65f, velocityChange.z);
 
         //Limit force
         Vector3.ClampMagnitude(velocityChange, MaxForce);

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3718556313637244559}
   - component: {fileID: 7825606179736586186}
   - component: {fileID: 3603808165446119983}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: goblin_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8817797693641578664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46.745544, y: -5.04, z: 39.043167}
-  m_LocalScale: {x: 57.573, y: 57.573, z: 57.573}
+  m_LocalScale: {x: 57.57301, y: 57.573, z: 57.57301}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
