@@ -107,7 +107,6 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
-                CurrentObject.useGravity = true;
                 CurrentObject = null;
                 return;
             }
@@ -116,7 +115,6 @@ public class ToolSwitch : MonoBehaviour
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
             {
                 CurrentObject = HitInfo.rigidbody;
-                CurrentObject.useGravity = false;
             }
         }
 
@@ -124,7 +122,6 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
-                CurrentObject.useGravity = true;
                 CurrentObject = null;
                 return;
             }
