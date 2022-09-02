@@ -11,7 +11,6 @@ public class PlayerScript : MonoBehaviour
     public GameObject CamHolder;
     public float Sensitivity;
 
-
     [Header("Movement")]
     public float OriginalSpeed;
     public float Speed;
@@ -29,6 +28,7 @@ public class PlayerScript : MonoBehaviour
         m_Move = context.ReadValue<Vector2>();
     }
 
+
     public void OnLook(InputAction.CallbackContext context)
     {
         m_Look = context.ReadValue<Vector2>();
@@ -45,7 +45,6 @@ public class PlayerScript : MonoBehaviour
     {
         Move();
         Run();
-
 
     }
 
