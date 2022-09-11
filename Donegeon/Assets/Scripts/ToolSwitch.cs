@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ToolSwitch : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class ToolSwitch : MonoBehaviour
     [Header("Picking Object")]
 
     [SerializeField] private LayerMask PickupMask;
-    [SerializeField] private LayerMask EnvironmentFixingMask;
+
 
     [SerializeField] private Camera PlayerCam;
     [SerializeField] private Transform PickupTarget;
@@ -20,11 +23,27 @@ public class ToolSwitch : MonoBehaviour
     private Rigidbody CurrentObject;
     private GameObject go;
 
+    [Header("Fixing Object")]
+    public LayerMask EnvironmentFixingMask;
+    public LayerMask BloodMask;
+
+    public Material MopMaterial_0;
+    public Material MopMaterial_1;
+    public Material MopMaterial_2;
+    public Material MopMaterial_3;
+
+    public GameObject MopGameObjectObject;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         selecttool();
         animator = animator.GetComponent<Animator>();
+        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_0;
+
     }
 
     // Update is called once per frame
@@ -80,6 +99,9 @@ public class ToolSwitch : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
         }
+
+
+        Debug.DrawRay(go.transform.position ,Vector3.forward , Color.yellow);
     }
 
     public void selecttool()
@@ -140,6 +162,38 @@ public class ToolSwitch : MonoBehaviour
                 go = HitInfo.transform.gameObject;
                 go.gameObject.SetActive(false);
 
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
+        {
+
+            Ray CameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+            if (Physics.Raycast(CameraRay,out RaycastHit HitInfo, PickupRange, BloodMask))
+            {
+                go = HitInfo.rigidbody.gameObject;
+                Destroy(go);
+
+                MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_1;
+
+                //If mop is already stain it will get more blood on it
+                if (MopGameObjectObject.GetComponent<MeshRenderer>().material == MopMaterial_1)
+                {
+                    MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_2;
+
+                    //If mop is already blooded it will get even more blood on it
+                    if (MopGameObjectObject.GetComponent<MeshRenderer>().material == MopMaterial_2)
+                    {
+                        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_3;
+
+                        //If mop is fully blooded it will still be bloody
+                        if (MopGameObjectObject.GetComponent<MeshRenderer>().material == MopMaterial_3)
+                        {
+                            MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_3;
+
+                        }
+                    }
+                }
             }
         }
     }
