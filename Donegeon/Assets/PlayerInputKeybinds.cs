@@ -29,12 +29,12 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Sheet"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""f8057807-a19b-4559-aaf0-a0cb09fb50bc"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Movement"",
@@ -69,17 +69,6 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""aede48cf-4228-486b-8f47-89ad0bf5dbba"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Sheet"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""becc150c-9137-42b1-94d7-230007da0e87"",
-                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",

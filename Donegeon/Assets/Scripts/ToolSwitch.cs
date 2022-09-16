@@ -26,6 +26,9 @@ public class ToolSwitch : MonoBehaviour
     [Header("Fixing Object")]
     public LayerMask EnvironmentFixingMask;
     public LayerMask BloodMask;
+    public LayerMask WaterMask;
+
+    public float BloodStage;
 
     public Material MopMaterial_0;
     public Material MopMaterial_1;
@@ -79,7 +82,7 @@ public class ToolSwitch : MonoBehaviour
 
         //use hammer tool
 
-        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 1)
+        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 1 || Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
         {
             animator.SetBool("UseTool", true);
             Fix();
@@ -100,8 +103,7 @@ public class ToolSwitch : MonoBehaviour
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
         }
 
-
-        Debug.DrawRay(go.transform.position ,Vector3.forward , Color.yellow);
+        blood_stain_stage();
     }
 
     public void selecttool()
@@ -148,8 +150,6 @@ public class ToolSwitch : MonoBehaviour
             {
                 CurrentObject.freezeRotation = false;
                 CurrentObject = null;
-                return;
-
             }
         }
     }
@@ -171,34 +171,46 @@ public class ToolSwitch : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
         {
-
             Ray CameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-            if (Physics.Raycast(CameraRay,out RaycastHit HitInfo, PickupRange, BloodMask))
+
+            if (BloodStage >= 0f && BloodStage <= 2f)
             {
-                go = HitInfo.rigidbody.gameObject;
-                Destroy(go);
-
-                MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_1;
-
-                //If mop is already stain it will get more blood on it
-                if (MopGameObjectObject.GetComponent<MeshRenderer>().material == MopMaterial_1)
+                if (Physics.Raycast(CameraRay,out RaycastHit hitInfoBloodHit, PickupRange, BloodMask))
                 {
-                    MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_2;
-
-                    //If mop is already blooded it will get even more blood on it
-                    if (MopGameObjectObject.GetComponent<MeshRenderer>().material == MopMaterial_2)
-                    {
-                        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_3;
-
-                        //If mop is fully blooded it will still be bloody
-                        if (MopGameObjectObject.GetComponent<MeshRenderer>().material == MopMaterial_3)
-                        {
-                            MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_3;
-
-                        }
-                    }
+                    //Destroy blood stain on map
+                    ++BloodStage;
+                    go = hitInfoBloodHit.transform.gameObject;
+                    Destroy(go);
                 }
             }
+            else if (Physics.Raycast(CameraRay, out RaycastHit hit, PickupRange, WaterMask))
+            {
+                //Reset blood stain
+                BloodStage = 0f;
+            }
+        }
+    }
+
+    void blood_stain_stage()
+    {
+        if (BloodStage == 0f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_0;
+        }
+        //If mop is already stain it will get more blood on it
+        else if (BloodStage == 1f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_1;
+        }
+        //If mop is already blooded it will get even more blood on it
+        else if (BloodStage == 2f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_2;
+        }
+        //If mop is fully blooded it will still be bloody
+        else if (BloodStage == 3f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_3;
         }
     }
 

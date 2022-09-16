@@ -10,12 +10,15 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody Rb;
     public GameObject CamHolder;
     public float Sensitivity;
+    public Animator Animator;
+
 
     [Header("Movement")]
     public float OriginalSpeed;
     public float Speed;
     public float RunSpeed;
     public float MaxForce;
+    public float JumpForce;
 
 
     private Vector2 m_Move, m_Look;
@@ -34,8 +37,12 @@ public class PlayerScript : MonoBehaviour
         m_Look = context.ReadValue<Vector2>();
     }
 
+    public void OnJump()
+    {
+    }
 
-    void Start()
+
+        void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         OriginalSpeed = Speed;
@@ -45,7 +52,7 @@ public class PlayerScript : MonoBehaviour
     {
         Move();
         Run();
-
+        m_TestJump();
     }
 
     void Update()
@@ -99,6 +106,25 @@ public class PlayerScript : MonoBehaviour
 
     void Jump()
     {
+        Vector3 junpForcesVector3 = Vector3.zero;
+
+        if (Animator.GetBool("grounded"))
+        {
+            junpForcesVector3 = Vector3.up * JumpForce;
+        }
+
+        Rb.AddForce(junpForcesVector3, ForceMode.VelocityChange);
+    }
+
+    void m_TestJump()
+    {
+        Vector3 junpForcesVector3 = Vector3.zero;
+
+        if (Input.GetKeyDown(KeyCode.Space) && Animator.GetBool("grounded"))
+        {
+            junpForcesVector3 = Vector3.up * JumpForce;
+        }
+        Rb.AddForce(junpForcesVector3, ForceMode.VelocityChange);
 
     }
 
