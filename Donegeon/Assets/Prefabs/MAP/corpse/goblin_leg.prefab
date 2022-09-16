@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6347974229838396273}
   - component: {fileID: 1039847980099706411}
   - component: {fileID: 5594955831553392974}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: goblin_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5953419250602678826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -42.71836, y: 1.0028533, z: 37.747517}
-  m_LocalScale: {x: 57.573, y: 57.573, z: 57.573}
+  m_LocalScale: {x: 57.573, y: 57.572998, z: 57.572998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +95,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 3
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

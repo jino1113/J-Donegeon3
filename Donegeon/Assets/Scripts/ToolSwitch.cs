@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ToolSwitch : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class ToolSwitch : MonoBehaviour
     [Header("Picking Object")]
 
     [SerializeField] private LayerMask PickupMask;
-    [SerializeField] private LayerMask EnvironmentFixingMask;
+
 
     [SerializeField] private Camera PlayerCam;
     [SerializeField] private Transform PickupTarget;
@@ -20,11 +23,30 @@ public class ToolSwitch : MonoBehaviour
     private Rigidbody CurrentObject;
     private GameObject go;
 
+    [Header("Fixing Object")]
+    public LayerMask EnvironmentFixingMask;
+    public LayerMask BloodMask;
+    public LayerMask WaterMask;
+
+    public float BloodStage;
+
+    public Material MopMaterial_0;
+    public Material MopMaterial_1;
+    public Material MopMaterial_2;
+    public Material MopMaterial_3;
+
+    public GameObject MopGameObjectObject;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         selecttool();
         animator = animator.GetComponent<Animator>();
+        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_0;
+
     }
 
     // Update is called once per frame
@@ -60,7 +82,7 @@ public class ToolSwitch : MonoBehaviour
 
         //use hammer tool
 
-        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 1)
+        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 1 || Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
         {
             animator.SetBool("UseTool", true);
             Fix();
@@ -80,6 +102,8 @@ public class ToolSwitch : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
         }
+
+        blood_stain_stage();
     }
 
     public void selecttool()
@@ -107,7 +131,7 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
-                CurrentObject.useGravity = true;
+                CurrentObject.freezeRotation = false;
                 CurrentObject = null;
                 return;
             }
@@ -116,7 +140,7 @@ public class ToolSwitch : MonoBehaviour
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
             {
                 CurrentObject = HitInfo.rigidbody;
-                CurrentObject.useGravity = false;
+                CurrentObject.freezeRotation = true;
             }
         }
 
@@ -124,9 +148,8 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
-                CurrentObject.useGravity = true;
+                CurrentObject.freezeRotation = false;
                 CurrentObject = null;
-                return;
             }
         }
     }
@@ -144,6 +167,50 @@ public class ToolSwitch : MonoBehaviour
                 go.gameObject.SetActive(false);
 
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
+        {
+            Ray CameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+            if (BloodStage >= 0f && BloodStage <= 2f)
+            {
+                if (Physics.Raycast(CameraRay,out RaycastHit hitInfoBloodHit, PickupRange, BloodMask))
+                {
+                    //Destroy blood stain on map
+                    ++BloodStage;
+                    go = hitInfoBloodHit.transform.gameObject;
+                    Destroy(go);
+                }
+            }
+            else if (Physics.Raycast(CameraRay, out RaycastHit hit, PickupRange, WaterMask))
+            {
+                //Reset blood stain
+                BloodStage = 0f;
+            }
+        }
+    }
+
+    void blood_stain_stage()
+    {
+        if (BloodStage == 0f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_0;
+        }
+        //If mop is already stain it will get more blood on it
+        else if (BloodStage == 1f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_1;
+        }
+        //If mop is already blooded it will get even more blood on it
+        else if (BloodStage == 2f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_2;
+        }
+        //If mop is fully blooded it will still be bloody
+        else if (BloodStage == 3f)
+        {
+            MopGameObjectObject.GetComponent<Renderer>().material = MopMaterial_3;
         }
     }
 
