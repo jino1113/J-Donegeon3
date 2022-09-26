@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class ToolSwitch : MonoBehaviour
 {
@@ -14,7 +11,7 @@ public class ToolSwitch : MonoBehaviour
     [Header("Picking Object")]
 
     [SerializeField] private LayerMask PickupMask;
-
+    [SerializeField] private LayerMask EnvironmentFixingMask;
 
     [SerializeField] private Camera PlayerCam;
     [SerializeField] private Transform PickupTarget;
@@ -24,30 +21,11 @@ public class ToolSwitch : MonoBehaviour
     private Rigidbody CurrentObject;
     private GameObject go;
 
-    [Header("Fixing Object")]
-    public LayerMask EnvironmentFixingMask;
-    public LayerMask BloodMask;
-    public LayerMask WaterMask;
-
-    public float BloodStage;
-
-    public Material MopMaterial_0;
-    public Material MopMaterial_1;
-    public Material MopMaterial_2;
-    public Material MopMaterial_3;
-
-    public GameObject MopGameObjectObject;
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         Selecttool();
         animator = animator.GetComponent<Animator>();
-        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_0;
-
     }
 
     // Update is called once per frame
@@ -86,7 +64,7 @@ public class ToolSwitch : MonoBehaviour
 
         //use hammer tool
 
-        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 1 || Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
+        if (Input.GetKey(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 1)
         {
             animator.SetBool("UseTool", true);
             Fix();
@@ -106,8 +84,6 @@ public class ToolSwitch : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
         }
-
-        blood_stain_stage();
     }
 
     public void Selecttool()
@@ -135,7 +111,7 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
-                CurrentObject.freezeRotation = false;
+                CurrentObject.useGravity = true;
                 CurrentObject = null;
                 return;
             }
@@ -144,7 +120,7 @@ public class ToolSwitch : MonoBehaviour
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, PickupRange, PickupMask))
             {
                 CurrentObject = HitInfo.rigidbody;
-                CurrentObject.freezeRotation = true;
+                CurrentObject.useGravity = false;
             }
         }
 
@@ -152,8 +128,9 @@ public class ToolSwitch : MonoBehaviour
         {
             if (CurrentObject)
             {
-                CurrentObject.freezeRotation = false;
+                CurrentObject.useGravity = true;
                 CurrentObject = null;
+                return;
             }
         }
     }
@@ -172,6 +149,7 @@ public class ToolSwitch : MonoBehaviour
 
             }
         }
+<<<<<<< HEAD
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
         {
@@ -212,6 +190,8 @@ private void blood_stain_stage()
             3f => MopMaterial_3,
             _ => MopGameObjectObject.GetComponent<Renderer>().material
         };
+=======
+>>>>>>> Art
     }
 
 }
