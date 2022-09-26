@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    public Transform cameraPosition;
 
+    public PlayerMove pm;
+    public Animator animator;
+
+    public ToolSwitch toolSwitch;
+
+    public Transform cameraPosition;
     // Start is called before the first frame update
     void Start()
     {

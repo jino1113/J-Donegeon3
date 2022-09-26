@@ -1,62 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
 public class Facerotation : MonoBehaviour
 {
-    [Header("Ground Check")]
 
-    [SerializeField] private GameObject m_GroundCheckGameObject;
+    [Header("Camera Animator")]
 
-    public float playerHeight;
-    public LayerMask whatisGround;
-
-    [Header("Camera Animator")] 
-    
-    public GameObject Player;
     public Animator animator;
+    private bool grounded;
+
+    public PlayerMove pm;
 
     public Transform cameraRotation;
-
+    // Start is called before the first frame update
     void Start()
     {
         animator = animator.GetComponent<Animator>();
     }
 
-    void FixedUpdate()
-    {
-        transform.rotation = cameraRotation.rotation;
-    }
-
+    // Update is called once per frame
     void Update()
     {
+        grounded = pm.grounded;
+        transform.rotation = cameraRotation.rotation;
+
         Movement();
-        IsGround();
-        Debug.DrawRay(m_GroundCheckGameObject.transform.position, -Vector3.up * playerHeight, Color.red);
-    }
 
-    void IsGround()
-    {
-        if (Physics.Raycast(m_GroundCheckGameObject.transform.position, -Vector3.up, playerHeight, whatisGround))
-        {
-            animator.SetBool("grounded", true);
-
-        }
-        else
-        {
-            animator.SetBool("grounded", false);
-        }
+        animator.SetBool("grounded", grounded);
     }
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.D))
+        if (pm.horizontalInput != 0 || pm.verticalInput != 0)
         {
             animator.SetBool("Move", true);
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(pm.RunKey))
             {
                 animator.SetBool("Run", true);
             }
@@ -70,6 +50,5 @@ public class Facerotation : MonoBehaviour
             animator.SetBool("Move", false);
             animator.SetBool("Run", false);
         }
-
     }
 }
