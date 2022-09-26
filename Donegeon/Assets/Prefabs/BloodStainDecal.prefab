@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6942187522667422503}
   - component: {fileID: 6942187522667422502}
   - component: {fileID: 197147824}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: BloodStainDecal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_UVBias: {x: 0, y: 0}
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0}
-  m_Size: {x: 5, y: 5, z: 1}
+  m_Size: {x: 5, y: 5, z: 3.13}
   m_FadeFactor: 0.5
 --- !u!65 &197147824
 BoxCollider:
@@ -67,5 +67,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.8320093, y: 4.5206184, z: 0.028730132}
-  m_Center: {x: -0.022429466, y: -0.0040495396, z: -0.06676317}
+  m_Size: {x: 4.8320093, y: 4.5206184, z: 1.9471693}
+  m_Center: {x: -0.022429466, y: -0.0040495414, z: 0.8924424}

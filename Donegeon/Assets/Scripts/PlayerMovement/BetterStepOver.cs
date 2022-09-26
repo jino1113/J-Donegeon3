@@ -20,18 +20,15 @@ public class BetterStepOver : MonoBehaviour
     {
         StepClimb();
 
-        Debug.DrawRay(StepRayLowerGameObject.transform.position, (-Vector3.forward) * 0.8f,Color.cyan);
-        Debug.DrawRay(StepRayUpperGameObject.transform.position, (-Vector3.forward) * 1.2f, Color.blue);
-
     }
 
     void StepClimb()
     {
         RaycastHit hitLowerHit;
-        if (Physics.Raycast(StepRayLowerGameObject.transform.position, transform.TransformDirection(-Vector3.forward), out hitLowerHit, 0.8f))
+        if (Physics.Raycast(StepRayLowerGameObject.transform.position, transform.TransformDirection(Vector3.forward), out hitLowerHit, 0.5f))
         {
             RaycastHit hitUpperHit;
-            if (!Physics.Raycast(StepRayUpperGameObject.transform.position, transform.TransformDirection(-Vector3.forward),out hitUpperHit,1.2f))
+            if (!Physics.Raycast(StepRayUpperGameObject.transform.position, transform.TransformDirection(Vector3.forward),out hitUpperHit,1.2f))
             {
                 Rigidbody.position -= new Vector3(0f, -stepSmooth, 0f);
             }
