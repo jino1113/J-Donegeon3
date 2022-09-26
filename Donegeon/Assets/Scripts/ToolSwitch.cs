@@ -149,7 +149,6 @@ public class ToolSwitch : MonoBehaviour
 
             }
         }
-<<<<<<< HEAD
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetInteger("UsingTool") == 2)
         {
@@ -190,8 +189,7 @@ private void blood_stain_stage()
             3f => MopMaterial_3,
             _ => MopGameObjectObject.GetComponent<Renderer>().material
         };
-=======
->>>>>>> Art
+
     }
 
 }
