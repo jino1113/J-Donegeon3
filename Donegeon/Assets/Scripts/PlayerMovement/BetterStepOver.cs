@@ -13,21 +13,22 @@ public class BetterStepOver : MonoBehaviour
 
     void Awaken()
     {
-        StepRayUpperGameObject.transform.position = new Vector3(StepRayUpperGameObject.transform.position.x, stepHeight, StepRayUpperGameObject.transform.position.z);
+        //StepRayUpperGameObject.transform.position = new Vector3(StepRayUpperGameObject.transform.position.x, stepHeight, StepRayUpperGameObject.transform.position.z);
     }
 
     void FixedUpdate()
     {
         StepClimb();
+
     }
 
     void StepClimb()
     {
         RaycastHit hitLowerHit;
-        if (Physics.Raycast(StepRayLowerGameObject.transform.position, transform.TransformDirection(Vector3.forward), out hitLowerHit, 0.1f))
+        if (Physics.Raycast(StepRayLowerGameObject.transform.position, transform.TransformDirection(Vector3.forward), out hitLowerHit, 0.5f))
         {
             RaycastHit hitUpperHit;
-            if (!Physics.Raycast(StepRayUpperGameObject.transform.position, transform.TransformDirection(Vector3.forward),out hitUpperHit,0.2f))
+            if (!Physics.Raycast(StepRayUpperGameObject.transform.position, transform.TransformDirection(Vector3.forward),out hitUpperHit,1.7f))
             {
                 Rigidbody.position -= new Vector3(0f, -stepSmooth, 0f);
             }
