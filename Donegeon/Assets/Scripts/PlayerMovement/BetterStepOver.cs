@@ -28,7 +28,7 @@ public class BetterStepOver : MonoBehaviour
         if (Physics.Raycast(StepRayLowerGameObject.transform.position, transform.TransformDirection(Vector3.forward), out hitLowerHit, 0.5f))
         {
             RaycastHit hitUpperHit;
-            if (!Physics.Raycast(StepRayUpperGameObject.transform.position, transform.TransformDirection(Vector3.forward),out hitUpperHit,1.2f))
+            if (!Physics.Raycast(StepRayUpperGameObject.transform.position, transform.TransformDirection(Vector3.forward),out hitUpperHit,1.7f))
             {
                 Rigidbody.position -= new Vector3(0f, -stepSmooth, 0f);
             }
