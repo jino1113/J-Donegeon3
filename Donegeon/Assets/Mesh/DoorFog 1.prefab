@@ -29,6 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8939115924055280993}
+  - {fileID: 5685765753988952456}
   - {fileID: 8939115922961080857}
   - {fileID: 8939115922924077977}
   - {fileID: 8939115923358598414}
@@ -36,7 +37,6 @@ Transform:
   - {fileID: 8939115922947075978}
   - {fileID: 8939115924450646648}
   - {fileID: 8939115924769673098}
-  - {fileID: 5685765753988952456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4650958922802286963}
   - component: {fileID: 8435463213067037289}
   m_Layer: 0
-  m_Name: Fog (1)
+  m_Name: Main Fog2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,12 +68,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5376904248069124896}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.00000011921, y: 6.667, z: 0}
+  m_LocalPosition: {x: 0, y: 6.667, z: 0}
   m_LocalScale: {x: 0.59054554, y: 0.41664, z: 0.31389856}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 8
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &1474960557423793811
 MeshFilter:
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8939115922924077980}
   - component: {fileID: 8939115922924077981}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: SideFog2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 25, y: 90, z: 100}
 --- !u!33 &8939115922924077982
 MeshFilter:
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 8939115922947075977}
   - component: {fileID: 8939115922947075982}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: SideFog5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 4.5}
 --- !u!33 &8939115922947075979
 MeshFilter:
@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 8939115922961080860}
   - component: {fileID: 8939115922961080861}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: SideFog1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +430,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 60, y: 90, z: 92.227}
 --- !u!33 &8939115922961080862
 MeshFilter:
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 8939115923358598413}
   - component: {fileID: 8939115923358598418}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: SideFog3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,7 +549,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -60, y: 90, z: 92.227}
 --- !u!33 &8939115923358598415
 MeshFilter:
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 8939115924055280996}
   - component: {fileID: 8939115924055280997}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: Main Fog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 8939115924450646655}
   - component: {fileID: 8939115924450646652}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: SideFog6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,7 +787,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -4}
 --- !u!33 &8939115924450646649
 MeshFilter:
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 8939115924685334423}
   - component: {fileID: 8939115924685334420}
   m_Layer: 0
-  m_Name: Fog
+  m_Name: SideFog4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,7 +906,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -25, y: 90, z: 100}
 --- !u!33 &8939115924685334417
 MeshFilter:
@@ -1003,6 +1003,7 @@ GameObject:
   - component: {fileID: 8939115924769673098}
   - component: {fileID: 8939115924769673092}
   - component: {fileID: 8939115924769673093}
+  - component: {fileID: 3224822467892855646}
   m_Layer: 0
   m_Name: FogParitcle
   m_TagString: Untagged
@@ -1023,7 +1024,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554011326562463549}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &8939115924769673092
 ParticleSystem:
@@ -5804,3 +5805,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!95 &3224822467892855646
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939115924769673099}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d593da8f1283cf745925395316ccbb28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
