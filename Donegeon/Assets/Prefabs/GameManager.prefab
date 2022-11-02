@@ -45,6 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39cd1b2680d97640b9801b3abae8004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QuestNameTextList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ClearQuestColor: {r: 0.45282388, g: 1, b: 0.2588235, a: 1}
 --- !u!1 &6046048774631126618
 GameObject:
   m_ObjectHideFlags: 0
