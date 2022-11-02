@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class WallFixingCheck : MonoBehaviour
 {
+    [SerializeField] private List<ParticleSystem> ps;
+    [SerializeField] private GameObject ParticlePos;
     public List<GameObject> WallList;
     public float Progress;
 
-    // Update is called once per frame
+
     void Update()
     {
         m_Fixing();
@@ -18,24 +20,36 @@ public class WallFixingCheck : MonoBehaviour
     {
         if (!WallList[0].activeSelf && Progress == 0)
         {
+            Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
+            Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
+
             Progress += 25;
             WallList[1].SetActive(true);
             WallList[0].SetActive(false);
         }
         if (!WallList[1].activeSelf && !WallList[0].activeSelf && Progress == 25)
         {
+            Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
+            Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
+
             Progress += 25;
             WallList[2].SetActive(true);
             WallList[1].SetActive(false);
         }
         if (!WallList[2].activeSelf && !WallList[1].activeSelf && !WallList[0].activeSelf && Progress == 50)
         {
+            Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
+            Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
+
             Progress += 25;
             WallList[3].SetActive(true);
             WallList[2].SetActive(false);
         }
         if (!WallList[3].activeSelf && !WallList[2].activeSelf && !WallList[1].activeSelf && !WallList[0].activeSelf && Progress == 75)
         {
+            Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
+            Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
+
             Progress += 25;
             WallList[4].SetActive(true);
             WallList[3].SetActive(false);
