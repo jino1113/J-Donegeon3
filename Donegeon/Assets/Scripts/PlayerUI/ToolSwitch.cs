@@ -46,8 +46,28 @@ public class ToolSwitch : MonoBehaviour
 
     public GameObject MopGameObjectObject;
 
+    [Header("Interact Object")] 
+    [SerializeField] private bool Cooldown;
+    public bool InteractBool;
+    [SerializeField] private LayerMask InteractableMask;
+
+
+    public static ToolSwitch Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+
     void Start()
     {
+        Cooldown = true;
         BloodParticleSystem.GetComponent<ParticleSystem>();
         WaterParticleSystem.GetComponent<ParticleSystem>();
         Selecttool();
@@ -58,18 +78,36 @@ public class ToolSwitch : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        Debug.DrawRay(transform.position, (Vector3.forward) * PickupRange, Color.gray);
-
         //Tool wheel
-
         int lasttool = toolselect;
+        InteractBool = false;
 
-        Pick();
 
+        if (Cooldown == true)
+        {
+            Tool0Action();
+            ChangeNUse();
+        }
+    }
+
+    void FixedUpdate()
+    {
+
+        if (CurrentObject)
+        {
+            Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
+            float DistanceToPoint = DirectionToPoint.magnitude;
+
+            CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
+        }
+
+        blood_stain_stage();
+    }
+
+    public void ChangeNUse()
+    {
         if (Input.GetKey(KeyCode.Alpha1))
         {
             toolselect = 0;
@@ -94,6 +132,14 @@ public class ToolSwitch : MonoBehaviour
             MopAnimator.SetInteger("Tool", 2);
             Selecttool();
         }
+        else if (Input.GetKey(KeyCode.Alpha4))
+        {
+            toolselect = 3;
+            MovementAnimator.SetInteger("Tool", 3);
+            HammerAnimator.SetInteger("Tool", 3);
+            MopAnimator.SetInteger("Tool", 3);
+            Selecttool();
+        }
 
         //use tool
 
@@ -110,18 +156,6 @@ public class ToolSwitch : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (CurrentObject)
-        {
-            Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
-            float DistanceToPoint = DirectionToPoint.magnitude;
-
-            CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
-        }
-
-        blood_stain_stage();
-    }
 
     public void Selecttool()
     {
@@ -146,9 +180,16 @@ public class ToolSwitch : MonoBehaviour
             ToolsList[0].transform.position = ToolsDepot.transform.position;
             ToolsList[1].transform.position = ToolsDepot.transform.position;
         }
+        else if (toolselect == 3)
+        {
+            ToolsList[2].transform.position = ToolsPosList[2].transform.position;
+
+            ToolsList[0].transform.position = ToolsDepot.transform.position;
+            ToolsList[1].transform.position = ToolsDepot.transform.position;
+        }
     }
 
-    public void Pick()
+    void Tool0Action()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && MovementAnimator.GetInteger("Tool") == 0)
         {
@@ -167,6 +208,15 @@ public class ToolSwitch : MonoBehaviour
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.freezeRotation = true;
             }
+
+            else if (Physics.Raycast(CameraRay, out RaycastHit _, PickupRange, InteractableMask))
+            {
+                Cooldown = false;
+                Debug.Log("SpawnBoxNow");
+                InteractBool = true;
+                StartCoroutine(Wait(1f));
+            }
+
             else
             {
                 MovementAnimator.SetBool("UseTool", false);
@@ -187,7 +237,7 @@ public class ToolSwitch : MonoBehaviour
         }
     }
 
-    public void Fix()
+    void Fix()
     {
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && MovementAnimator.GetInteger("Tool") == 1)
@@ -210,7 +260,7 @@ public class ToolSwitch : MonoBehaviour
             {
                 if (Physics.Raycast(cameraRay,out RaycastHit hitInfoBloodHit, m_CleaningRange, BloodMask))
                 {
-                    
+                    StartCoroutine(Wait(0.75f));
                     //Destroy blood stain on map
                     ++BloodStage;
                     go = hitInfoBloodHit.transform.gameObject;
@@ -220,16 +270,22 @@ public class ToolSwitch : MonoBehaviour
 
             if (Physics.Raycast(cameraRay, out _, m_CleaningRange, WaterMask))
             {
+                Cooldown = false;
+                StartCoroutine(Wait(0.75f));
                 Instantiate(WaterParticleSystem, ParticlePosGameObject.transform.position,Quaternion.identity);
                 //Reset blood stain
                 BloodStage = 0f;
             }
             if (BloodStage != 0)
             {
+                Cooldown = false;
+                StartCoroutine(Wait(0.75f));
                 Instantiate(BloodParticleSystem, ParticlePosGameObject.transform.position,Quaternion.identity);
             }
             else
             {
+                Cooldown = false;
+                StartCoroutine(Wait(0.75f));
                 Instantiate(WaterParticleSystem, ParticlePosGameObject.transform.position, Quaternion.identity);
             }
         }
@@ -253,6 +309,7 @@ public class ToolSwitch : MonoBehaviour
     IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
+        Cooldown = true;
     }
 
 
