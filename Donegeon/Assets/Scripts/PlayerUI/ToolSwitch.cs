@@ -12,6 +12,7 @@ public class ToolSwitch : MonoBehaviour
     public Animator MovementAnimator;
     public Animator HammerAnimator;
     public Animator MopAnimator;
+    public Animator TorchAnimator;
     [SerializeField] private List<GameObject> ToolsList;
     [SerializeField] private List<GameObject> ToolsPosList;
     [SerializeField] private GameObject ToolsDepot;
@@ -32,6 +33,7 @@ public class ToolSwitch : MonoBehaviour
     public LayerMask EnvironmentFixingMask;
     public LayerMask BloodMask;
     public LayerMask WaterMask;
+    public LayerMask CandleMask;
 
     [SerializeField] private ParticleSystem BloodParticleSystem;
     [SerializeField] private ParticleSystem WaterParticleSystem;
@@ -47,6 +49,7 @@ public class ToolSwitch : MonoBehaviour
     public GameObject MopGameObjectObject;
 
     [Header("Interact Object")] 
+    [SerializeField] private bool Fire;
     [SerializeField] private bool Cooldown;
     public bool InteractBool;
     [SerializeField] private LayerMask InteractableMask;
@@ -114,6 +117,7 @@ public class ToolSwitch : MonoBehaviour
             MovementAnimator.SetInteger("Tool", 0);
             HammerAnimator.SetInteger("Tool", 0);
             MopAnimator.SetInteger("Tool", 0);
+            TorchAnimator.SetInteger("Tool", 0);
             Selecttool();
         }
         else if (Input.GetKey(KeyCode.Alpha2))
@@ -122,6 +126,7 @@ public class ToolSwitch : MonoBehaviour
             MovementAnimator.SetInteger("Tool", 1);
             HammerAnimator.SetInteger("Tool", 1);
             MopAnimator.SetInteger("Tool", 1);
+            TorchAnimator.SetInteger("Tool", 1);
             Selecttool();
         }
         else if (Input.GetKey(KeyCode.Alpha3))
@@ -130,6 +135,7 @@ public class ToolSwitch : MonoBehaviour
             MovementAnimator.SetInteger("Tool", 2);
             HammerAnimator.SetInteger("Tool", 2);
             MopAnimator.SetInteger("Tool", 2);
+            TorchAnimator.SetInteger("Tool", 2);
             Selecttool();
         }
         else if (Input.GetKey(KeyCode.Alpha4))
@@ -138,21 +144,26 @@ public class ToolSwitch : MonoBehaviour
             MovementAnimator.SetInteger("Tool", 3);
             HammerAnimator.SetInteger("Tool", 3);
             MopAnimator.SetInteger("Tool", 3);
+            TorchAnimator.SetInteger("Tool", 3);
             Selecttool();
         }
 
         //use tool
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && HammerAnimator.GetInteger("Tool") == 1 || Input.GetKeyDown(KeyCode.Mouse0) && MopAnimator.GetInteger("Tool") == 2)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && HammerAnimator.GetInteger("Tool") == 1 
+            || Input.GetKeyDown(KeyCode.Mouse0) && MopAnimator.GetInteger("Tool") == 2 
+            || Input.GetKeyDown(KeyCode.Mouse0) && TorchAnimator.GetInteger("Tool") == 3)
         {
             HammerAnimator.SetBool("UseTool", true);
             MopAnimator.SetBool("UseTool", true);
+            TorchAnimator.SetBool("UseTool", true);
             Fix();
         }
         else
         {
             HammerAnimator.SetBool("UseTool", false);
             MopAnimator.SetBool("UseTool", false);
+            TorchAnimator.SetBool("UseTool", false);
         }
     }
 
@@ -165,6 +176,8 @@ public class ToolSwitch : MonoBehaviour
 
             ToolsList[1].transform.position = ToolsDepot.transform.position;
             ToolsList[2].transform.position = ToolsDepot.transform.position;
+            ToolsList[3].transform.position = ToolsDepot.transform.position;
+
         }
         else if (toolselect == 1)
         {
@@ -172,6 +185,8 @@ public class ToolSwitch : MonoBehaviour
 
             ToolsList[0].transform.position = ToolsDepot.transform.position;
             ToolsList[2].transform.position = ToolsDepot.transform.position;
+            ToolsList[3].transform.position = ToolsDepot.transform.position;
+
         }
         else if (toolselect == 2)
         {
@@ -179,13 +194,16 @@ public class ToolSwitch : MonoBehaviour
 
             ToolsList[0].transform.position = ToolsDepot.transform.position;
             ToolsList[1].transform.position = ToolsDepot.transform.position;
+            ToolsList[3].transform.position = ToolsDepot.transform.position;
+
         }
         else if (toolselect == 3)
         {
-            ToolsList[2].transform.position = ToolsPosList[2].transform.position;
+            ToolsList[3].transform.position = ToolsPosList[3].transform.position;
 
             ToolsList[0].transform.position = ToolsDepot.transform.position;
             ToolsList[1].transform.position = ToolsDepot.transform.position;
+            ToolsList[2].transform.position = ToolsDepot.transform.position;
         }
     }
 
@@ -214,7 +232,7 @@ public class ToolSwitch : MonoBehaviour
                 Cooldown = false;
                 Debug.Log("SpawnBoxNow");
                 InteractBool = true;
-                StartCoroutine(Wait(1f));
+                StartCoroutine(Wait(3f));
             }
 
             else
@@ -287,6 +305,16 @@ public class ToolSwitch : MonoBehaviour
                 Cooldown = false;
                 StartCoroutine(Wait(0.75f));
                 Instantiate(WaterParticleSystem, ParticlePosGameObject.transform.position, Quaternion.identity);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && MovementAnimator.GetInteger("Tool") == 3)
+        {
+            Ray cameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+            if (Physics.Raycast(cameraRay, out RaycastHit hit, m_CleaningRange, CandleMask))
+            {
+                Debug.Log("KKKKKKKK");
+                hit.transform.gameObject.GetComponent<LightCandle>().kindle = true;
             }
         }
     }

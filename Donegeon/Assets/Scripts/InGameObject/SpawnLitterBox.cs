@@ -6,24 +6,14 @@ public class SpawnLitterBox : MonoBehaviour
 {
     [SerializeField] private GameObject LitterBoxPrefabs;
     [SerializeField] private GameObject BoxSpawnPoint;
+    [SerializeField] private Animator BellAnimator;
 
     public bool SpawnBox;
-
-    public static SpawnLitterBox Instance;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
 
     void Update()
     {
         SpawnBox = ToolSwitch.Instance.InteractBool;
+        BellAnimator.SetBool("Ringing", false);
         CheckClick();
     }
 
@@ -31,6 +21,7 @@ public class SpawnLitterBox : MonoBehaviour
     {
         if (SpawnBox == true)
         {
+            BellAnimator.SetBool("Ringing",true);
             Instantiate(LitterBoxPrefabs, BoxSpawnPoint.transform.position, Quaternion.identity);
         }
     }
