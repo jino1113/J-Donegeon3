@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lava
+  - Litter
+  - BrokenWall
+  - Blood
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - Water
   - Litter
   - Lava
-  - 
-  - 
+  - Candle
+  - Interactable
   - 
   - 
   - 
