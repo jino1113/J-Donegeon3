@@ -16,12 +16,23 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
     [SerializeField] private List<Transform> CurrentLitterGameObject;
     [SerializeField] private List<Transform> CurrentBrokenWallGameObject;
     [SerializeField] private List<Transform> CurrentBloodGameObject;
+    [SerializeField] private List<Transform> CurrentCandleGameObject;
+    [SerializeField] private List<Transform> CurrentCandleHolderGameObject;
+
+    [SerializeField] private Transform CurrentBellGameObject;
+
 
     [SerializeField] private GameObject[] PreHoldLitterGameObjects;
     [SerializeField] private GameObject[] PreHoldBrokenWallGameObjects;
     [SerializeField] private GameObject[] PreHoldBloodGameObjects;
-    [SerializeField] private int LitterCount,BrokenWallCount,BloodCount;
+    [SerializeField] private GameObject[] PreHoldCandleGameObject;
+    [SerializeField] private GameObject[] PreHoldCandleHolderGameObject;
 
+    [SerializeField] private GameObject PreHoldBellGameObject;
+
+
+    public float NowScore;
+    public int LitterCount,BrokenWallCount,BloodCount,CandleCount,CandleHolderCount;
     public static PointArrow Instance;
 
     private void Awake()
@@ -77,20 +88,31 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         Triggers.Add("Quest1",false);
         Triggers.Add("Quest2", false);
         Triggers.Add("Quest3", false);
+        Triggers.Add("Quest4", false);
+        Triggers.Add("Quest5", false);
 
+
+
+        NowScore = 2f;
     }
 
-
-
-    void FixedUpdate()
+    void Update()
     {
         PreHoldLitterGameObjects = GameObject.FindGameObjectsWithTag("Litter");
         PreHoldBrokenWallGameObjects = GameObject.FindGameObjectsWithTag("BrokenWall");
         PreHoldBloodGameObjects = GameObject.FindGameObjectsWithTag("Blood");
+        PreHoldCandleGameObject = GameObject.FindGameObjectsWithTag("Candle");
+        PreHoldCandleHolderGameObject = GameObject.FindGameObjectsWithTag("CandleHolder");
+        PreHoldBellGameObject = GameObject.FindGameObjectWithTag("EnvironmentTool");
+
 
         AddToLitterPreHold();
         AddToBrokenWallPreHold();
         AddToBloodPreHold();
+        AddToCandleHolderPreHold();
+        AddToCurrentCandle();
+        setBellPosition();
+
 
         CompassControll();
     }
@@ -109,7 +131,15 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         {
             transform.LookAt(GetClosestLitter(CurrentBloodGameObject));
         }
-        else if (Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
+        else if (Triggers["Quest4"] == false && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
+        {
+            transform.LookAt(CurrentBellGameObject);
+        }
+        else if (Triggers["Quest5"] == false && Triggers["Quest4"] == true && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
+        {
+            transform.LookAt(GetClosestLitter(CurrentCandleHolderGameObject));
+        }
+        else if (Triggers["Quest5"] == true && Triggers["Quest4"] == true && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
         {
             CompassGameObject.SetActive(false);
         }
@@ -117,6 +147,17 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
 
     void AddToLitterPreHold()
     {
+        if (CurrentLitterGameObject.Count < PreHoldLitterGameObjects.Length)
+        {
+            NowScore -= 1;
+        }
+        if (CurrentLitterGameObject.Count > PreHoldLitterGameObjects.Length)
+        {
+            NowScore += 1f;
+            CurrentLitterGameObject.Clear();
+            Triggers["Quest1"] = true;
+        }
+
         LitterCount = 0;
         foreach (GameObject Item in PreHoldLitterGameObjects)
         {
@@ -128,15 +169,16 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
             LitterCount++;
         }
         CurrentLitterGameObject = CurrentLitterGameObject.Distinct().ToList();
-        if (CurrentLitterGameObject.Count > PreHoldLitterGameObjects.Length)
-        {
-            CurrentLitterGameObject.Clear();
-            Triggers["Quest1"] = true;
-        }
     }
 
     void AddToBrokenWallPreHold()
     {
+        if (CurrentBrokenWallGameObject.Count > PreHoldBrokenWallGameObjects.Length)
+        {
+            NowScore += 1f;
+            CurrentBrokenWallGameObject.Clear();
+            Triggers["Quest2"] = true;
+        }
         BrokenWallCount = 0;
         foreach (GameObject Item in PreHoldBrokenWallGameObjects)
         {
@@ -148,14 +190,21 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
             BrokenWallCount++;
         }
         CurrentBrokenWallGameObject = CurrentBrokenWallGameObject.Distinct().ToList();
-        if (CurrentBrokenWallGameObject.Count > PreHoldBrokenWallGameObjects.Length)
-        {
-            CurrentBrokenWallGameObject.Clear();
-            Triggers["Quest2"] = true;
-        }
+
     }
     void AddToBloodPreHold()
     {
+        if (CurrentBloodGameObject.Count < PreHoldBloodGameObjects.Length)
+        {
+            NowScore -= 1f;
+        }
+        if (CurrentBloodGameObject.Count > PreHoldBloodGameObjects.Length)
+        {
+            NowScore += 1f;
+            CurrentBloodGameObject.Clear();
+            Triggers["Quest3"] = true;
+        }
+
         BloodCount = 0;
         foreach (GameObject Item in PreHoldBloodGameObjects)
         {
@@ -167,10 +216,46 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
             BloodCount++;
         }
         CurrentBloodGameObject = CurrentBloodGameObject.Distinct().ToList();
-        if (CurrentBloodGameObject.Count > PreHoldBloodGameObjects.Length)
+    }
+
+    void AddToCandleHolderPreHold()
+    {
+        CandleHolderCount = 0;
+        foreach (GameObject Item in PreHoldCandleHolderGameObject)
         {
-            CurrentBloodGameObject.Clear();
-            Triggers["Quest3"] = true;
+            CurrentCandleHolderGameObject.Add(Item.transform);
+            if (CandleHolderCount == CurrentCandleHolderGameObject.Count)
+            {
+                break;
+            }
+            CandleHolderCount++;
         }
+        CurrentCandleHolderGameObject = CurrentCandleHolderGameObject.Distinct().ToList();
+    }
+
+    void AddToCurrentCandle()
+    {
+        if (CurrentCandleGameObject.Count < PreHoldCandleGameObject.Length)
+        {
+            NowScore += 1f;
+            Triggers["Quest5"] = true;
+        }
+
+        CandleCount = 0;
+        foreach (GameObject Item in PreHoldCandleGameObject)
+        {
+            CurrentCandleGameObject.Add(Item.transform);
+            if (CandleCount == CurrentCandleGameObject.Count)
+            {
+                break;
+            }
+            CandleCount++;
+        }
+        CurrentCandleGameObject = CurrentCandleGameObject.Distinct().ToList();
+    }
+
+    void setBellPosition()
+    {
+        CurrentBellGameObject = PreHoldBellGameObject.transform;
     }
 }

@@ -313,7 +313,6 @@ public class ToolSwitch : MonoBehaviour
             Ray cameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(cameraRay, out RaycastHit hit, m_CleaningRange, CandleMask))
             {
-                Debug.Log("KKKKKKKK");
                 hit.transform.gameObject.GetComponent<LightCandle>().kindle = true;
             }
         }

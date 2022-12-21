@@ -8,6 +8,9 @@ TagManager:
   - Litter
   - BrokenWall
   - Blood
+  - Candle
+  - EnvironmentTool
+  - CandleHolder
   layers:
   - Default
   - TransparentFX
