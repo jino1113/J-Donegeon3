@@ -6,7 +6,7 @@ using UnityEngine;
 public class BreakByForce : MonoBehaviour
 {
     public GameObject breakVersion;
-    public float bForce = 1f;
+    [SerializeField] private float bForce = 1f;
     protected Rigidbody rb;
     private int active = 0;
 

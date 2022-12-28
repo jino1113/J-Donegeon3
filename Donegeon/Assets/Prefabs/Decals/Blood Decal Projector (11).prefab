@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 914251762675090577}
   - component: {fileID: 8358393301320235113}
   - component: {fileID: 5627065276200156625}
+  - component: {fileID: -6350182718620417049}
+  - component: {fileID: -3885948785031077747}
   m_Layer: 8
   m_Name: Blood Decal Projector (11)
-  m_TagString: Untagged
+  m_TagString: Blood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6974338519677610251}
-  m_LocalRotation: {x: 0.0000019595025, y: -0.7071068, z: -0.7071068, w: 0.0000019595025}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -3.0237842, y: -0.804, z: 7.2172656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -55,7 +57,7 @@ MonoBehaviour:
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 0.5}
   m_Size: {x: 3, y: 3, z: 1}
-  m_FadeFactor: 0.65
+  m_FadeFactor: 0.7
 --- !u!65 &5627065276200156625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64,8 +66,40 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6974338519677610251}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.9999988, y: 2.9999993, z: 0.9970456}
   m_Center: {x: -0.0000001192093, y: 0.00000023841858, z: 0.5004177}
+--- !u!114 &-6350182718620417049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6974338519677610251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107e7d27d40c0164db5017035add70e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  IsOn: 1
+--- !u!54 &-3885948785031077747
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6974338519677610251}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

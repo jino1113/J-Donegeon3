@@ -238,7 +238,6 @@ public class ToolSwitch : MonoBehaviour
             else
             {
                 MovementAnimator.SetBool("UseTool", false);
-                CurrentObject.freezeRotation = false;
                 CurrentObject = null;
                 return;
             }

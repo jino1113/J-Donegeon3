@@ -2,16 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Animations;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameControllerManager : MonoBehaviour
 {
+    [SerializeField] private Text OverallProgress;
     [SerializeField] private List<Text> QuestNameTextList;
 
-    [SerializeField] private float NowDirtyScore,CleanPercentScore;
+    [SerializeField] private float NowDirtyScore,CleanPercentScore,GateOpenScore;
 
+    [SerializeField] private List<Animator> AnimatorController;
+
+    [SerializeField] private List<GameObject> FogGateGameObjects;
 
     public Color ClearQuestColor;
 
@@ -32,8 +37,7 @@ public class GameControllerManager : MonoBehaviour
         CheckAllQuestObject();
         CleaningPercent();
 
-        Debug.Log(CleanPercentScore + "%");
-        Debug.Log("NowScore = " + PointArrow.Instance.NowScore);
+        OverallProgress.text = "Progress: " + CleanPercentScore + "%";
     }
 
     void CheckAllQuestObject()
@@ -67,6 +71,19 @@ public class GameControllerManager : MonoBehaviour
                 QuestNameTextList[i].gameObject.SetActive(false);
             }
         }
+
+        if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true
+            && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] == true && PointArrow.Instance.NowScore >= GateOpenScore || Input.GetKeyDown(KeyCode.P))
+        {
+            int index = 0;
+            StartCoroutine(FogGateOpen());
+            foreach (var VARIABLE in AnimatorController)
+            {
+                AnimatorController[index].SetBool("Fade",true);
+                index++;
+            }
+            AnimatorController = null;
+        }
     }
 
     void CleaningPercent()
@@ -79,6 +96,16 @@ public class GameControllerManager : MonoBehaviour
 
         float i = PointArrow.Instance.NowScore / 10f;
         CleanPercentScore = i;
+    }
+
+
+
+    IEnumerator FogGateOpen()
+    {
+        yield return new WaitForSeconds(9);
+
+        FogGateGameObjects[0].SetActive(false);
+        FogGateGameObjects[1].SetActive(false);
     }
 
 }

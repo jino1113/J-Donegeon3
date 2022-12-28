@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 3376296135736637214}
   - component: {fileID: 3049141493509615261}
   - component: {fileID: 3049141493509615260}
-  - component: {fileID: 493901627}
+  - component: {fileID: 1121027771}
   m_Layer: 10
   m_Name: Bone
   m_TagString: Untagged
@@ -668,7 +668,7 @@ CapsuleCollider:
   m_Height: 0.038
   m_Direction: 1
   m_Center: {x: 0, y: 0.016, z: 0.002}
---- !u!114 &493901627
+--- !u!114 &1121027771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1646,7 +1646,7 @@ GameObject:
   - component: {fileID: 8218969139718767852}
   m_Layer: 10
   m_Name: Goblin_Ragdoll
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

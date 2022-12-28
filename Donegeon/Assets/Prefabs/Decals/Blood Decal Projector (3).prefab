@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 1361680184567755123}
   - component: {fileID: 5265069401821228855}
   - component: {fileID: 777006813781676375}
+  - component: {fileID: 4137004800427571621}
+  - component: {fileID: 8627117426528712323}
   m_Layer: 8
   m_Name: Blood Decal Projector (3)
-  m_TagString: Untagged
+  m_TagString: Blood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,8 +66,40 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4077016473200690810}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.9999988, y: 2.9999998, z: 0.998838}
   m_Center: {x: -0.00000011920943, y: 3.4241638e-18, z: 0.4998822}
+--- !u!114 &4137004800427571621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077016473200690810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107e7d27d40c0164db5017035add70e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  IsOn: 1
+--- !u!54 &8627117426528712323
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4077016473200690810}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

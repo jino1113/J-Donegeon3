@@ -93,7 +93,7 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
 
 
 
-        NowScore = 2f;
+        NowScore = 6f;
     }
 
     void Update()

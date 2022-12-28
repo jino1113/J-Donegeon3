@@ -11,6 +11,7 @@ TagManager:
   - Candle
   - EnvironmentTool
   - CandleHolder
+  - Ground
   layers:
   - Default
   - TransparentFX
