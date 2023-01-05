@@ -5,7 +5,7 @@ using UnityEngine;
 public class BloodOnMomentum : MonoBehaviour
 {
     public List<GameObject> decalPrefabs;
-    private bool Ready;
+    [SerializeField] private bool Ready;
 
     [SerializeField] private Rigidbody RB;
     [SerializeField] private LayerMask GroundMask;
@@ -13,6 +13,7 @@ public class BloodOnMomentum : MonoBehaviour
 
     void Start()
     {
+        Ready = true;
         gameObject.GetComponent<Rigidbody>();
     }
 
@@ -20,25 +21,28 @@ public class BloodOnMomentum : MonoBehaviour
     {
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
         if (Ready == true)
         {
-            Vector3 direction = other.transform.position - transform.position;
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, direction, out hit, GroundMask))
+            foreach (ContactPoint contact in collision.contacts)
             {
-                Debug.Log("Hit OK");
-                if (RB.velocity.magnitude > bForce)
+                Vector3 direction = contact.point - transform.position;
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, direction, out hit, GroundMask))
                 {
-                    Debug.Log("Velocity OK");
-                    if (hit.transform == other.transform)
+                    Debug.Log("Hit OK");
+                    if (RB.velocity.magnitude > bForce)
                     {
-                        Debug.Log("Spawn OK");
-                        int index = Random.Range(0, decalPrefabs.Count);
-                        GameObject decal = Instantiate(decalPrefabs[index], hit.point - (direction * -0.005f), Quaternion.LookRotation(hit.normal));
-                        decal.SetActive(true);
-                        StartCoroutine(SetReady());
+                        Debug.Log("Velocity OK");
+                        if (hit.transform == collision.transform)
+                        {
+                            Debug.Log("Spawn OK");
+                            int index = Random.Range(0, decalPrefabs.Count);
+                            GameObject decal = Instantiate(decalPrefabs[index], hit.point - (direction * -0.001f), Quaternion.LookRotation(hit.normal));
+                            decal.SetActive(true);
+                            StartCoroutine(SetReady());
+                        }
                     }
                 }
             }
@@ -53,7 +57,7 @@ public class BloodOnMomentum : MonoBehaviour
     IEnumerator SetReady()
     {
         Ready = false;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         Ready = true;
     }
 

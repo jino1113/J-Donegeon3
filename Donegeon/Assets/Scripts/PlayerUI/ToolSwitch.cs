@@ -41,10 +41,7 @@ public class ToolSwitch : MonoBehaviour
 
     public float BloodStage;
 
-    public Material MopMaterial_0;
-    public Material MopMaterial_1;
-    public Material MopMaterial_2;
-    public Material MopMaterial_3;
+    [SerializeField] private List<Material> MopMaterial_;
 
     public GameObject MopGameObjectObject;
 
@@ -77,7 +74,7 @@ public class ToolSwitch : MonoBehaviour
         MovementAnimator = MovementAnimator.GetComponent<Animator>();
         HammerAnimator = HammerAnimator.GetComponent<Animator>();
         MopAnimator = MopAnimator.GetComponent<Animator>();
-        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_0;
+        MopGameObjectObject.GetComponent<MeshRenderer>().material = MopMaterial_[0];
 
     }
 
@@ -273,7 +270,7 @@ public class ToolSwitch : MonoBehaviour
         {
             Ray cameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-            if (BloodStage is >= 0f and <= 2f)
+            if (BloodStage is >= 0f and <= 7f)
             {
                 if (Physics.Raycast(cameraRay,out RaycastHit hitInfoBloodHit, m_CleaningRange, BloodMask))
                 {
@@ -321,13 +318,19 @@ public class ToolSwitch : MonoBehaviour
     {
         MopGameObjectObject.GetComponent<Renderer>().material = BloodStage switch
         {
-            0f => MopMaterial_0,
+            0f => MopMaterial_[0],
             //If mop is already stain it will get more blood on it
-            1f => MopMaterial_1,
+            1f => MopMaterial_[1],
             //If mop is already blooded it will get even more blood on it
-            2f => MopMaterial_2,
+            2f => MopMaterial_[2],
             //If mop is fully blooded it will still be bloody
-            3f => MopMaterial_3,
+            3f => MopMaterial_[3],
+            4f => MopMaterial_[4],
+            5f => MopMaterial_[5],
+            6f => MopMaterial_[6],
+            7f => MopMaterial_[7],
+
+
             _ => MopGameObjectObject.GetComponent<Renderer>().material
         };
     }

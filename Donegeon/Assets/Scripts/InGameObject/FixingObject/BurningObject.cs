@@ -16,6 +16,7 @@ public class BurningObject : MonoBehaviour
 
     void Start()
     {
+        m_LavaPosGameObject = GameObject.Find("LavaPos");
         m_BurningParticle[0].GetComponent<ParticleSystem>();
         m_BurningParticle[1].GetComponent<ParticleSystem>();
         m_BurningParticle[2].GetComponent<ParticleSystem>();

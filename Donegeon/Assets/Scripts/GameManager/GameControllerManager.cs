@@ -2,34 +2,58 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameControllerManager : MonoBehaviour
 {
+    [SerializeField] double NowTime;
+
     [SerializeField] private Text OverallProgress;
     [SerializeField] private List<Text> QuestNameTextList;
 
-    [SerializeField] private float NowDirtyScore,CleanPercentScore,GateOpenScore;
+    [SerializeField] private float NowDirtyScore, GateOpenScore;
 
     [SerializeField] private List<Animator> AnimatorController;
 
     [SerializeField] private List<GameObject> FogGateGameObjects;
 
+    [SerializeField] private GameObject SceneName;
+
+    public bool Pause,Ending;
+    public float CleanPercentScore;
+    public double scoreTime;
+
     public Color ClearQuestColor;
+
+    public static GameControllerManager Instance;
 
     private void Awake()
     {
         Application.targetFrameRate = 300;
-        DontDestroyOnLoad(gameObject);
-
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
     void Start()
     {
-        CleaningPercent();
+        Ending = false;
+        Pause = false;
+        NowTime = 0;
+
+    }
+
+    void Update()
+    {
+        NowTime += Time.deltaTime;
     }
 
     void LateUpdate()
@@ -75,13 +99,16 @@ public class GameControllerManager : MonoBehaviour
         if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true
             && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] == true && PointArrow.Instance.NowScore >= GateOpenScore || Input.GetKeyDown(KeyCode.P))
         {
-            int index = 0;
-            StartCoroutine(FogGateOpen());
-            foreach (var VARIABLE in AnimatorController)
+            if (AnimatorController != null)
             {
-                AnimatorController[index].SetBool("Fade",true);
-                index++;
+                int index = 0;
+                foreach (var VARIABLE in AnimatorController)
+                {
+                    AnimatorController[index].SetBool("Fade",true);
+                    index++;
+                }
             }
+            StartCoroutine(FogGateOpen());
             AnimatorController = null;
         }
     }
@@ -98,6 +125,44 @@ public class GameControllerManager : MonoBehaviour
         CleanPercentScore = i;
     }
 
+    public void SceneCheck()
+    {
+        if (SceneManager.GetActiveScene().name == "MenuScene")
+        {
+
+            SceneManager.LoadScene("TheChateau");
+            Time.timeScale = 1;
+            StartCoroutine(GameReloadTimer());
+
+            Ending = false;
+            Pause = false;
+            PointArrow.Instance.Triggers["Quest1"] = false;
+            PointArrow.Instance.Triggers["Quest2"] = false;
+            PointArrow.Instance.Triggers["Quest3"] = false;
+            PointArrow.Instance.Triggers["Quest4"] = false;
+            PointArrow.Instance.Triggers["Quest5"] = false;
+            PointArrow.Instance.Triggers["Quest6"] = false;
+        }
+        if(SceneManager.GetActiveScene().name == "TheChateau")
+        {
+            scoreTime = NowTime;
+            Debug.Log(scoreTime);
+            scoreTime = scoreTime / 60.0f;
+            Time.timeScale = 1;
+            SceneManager.LoadScene("MenuScene");
+
+            StartCoroutine(GameReloadTimer());
+            Ending = true;
+        }
+    }
+
+    public void DisableCursor()
+    {
+        Time.timeScale = 1;
+        Pause = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
 
     IEnumerator FogGateOpen()
@@ -106,6 +171,11 @@ public class GameControllerManager : MonoBehaviour
 
         FogGateGameObjects[0].SetActive(false);
         FogGateGameObjects[1].SetActive(false);
+    }
+
+    IEnumerator GameReloadTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
     }
 
 }

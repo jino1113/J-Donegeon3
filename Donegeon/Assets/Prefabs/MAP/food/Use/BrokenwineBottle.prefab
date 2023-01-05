@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 847710294253867489}
   - component: {fileID: 5170875359882775521}
   - component: {fileID: 1889951156383310407}
+  - component: {fileID: 9180921041861148037}
   m_Layer: 10
   m_Name: pCylinder27.005
   m_TagString: Litter
@@ -115,6 +116,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9180921041861148037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555771004426549930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &2640469226895481829
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +149,7 @@ GameObject:
   - component: {fileID: 1926322478706108193}
   - component: {fileID: 5140852737334324904}
   - component: {fileID: 1202194639338826241}
+  - component: {fileID: 5832661521828405219}
   m_Layer: 10
   m_Name: pCylinder27.009
   m_TagString: Litter
@@ -230,6 +252,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5832661521828405219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2640469226895481829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &2967798387290628201
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +308,6 @@ Transform:
   - {fileID: 207175243184160497}
   - {fileID: 4244225634255023706}
   - {fileID: 4365142254666743610}
-  - {fileID: 1645373336069476992}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -283,6 +324,7 @@ GameObject:
   - component: {fileID: 6519476790409181963}
   - component: {fileID: 6077212583076164073}
   - component: {fileID: 4495450746349654541}
+  - component: {fileID: 6302449159260799432}
   m_Layer: 10
   m_Name: pCylinder27.010
   m_TagString: Litter
@@ -385,6 +427,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6302449159260799432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3461258439452075311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &3713020003852859480
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +460,7 @@ GameObject:
   - component: {fileID: 8592866517022366824}
   - component: {fileID: 5874286662505709769}
   - component: {fileID: 5962357870008654685}
+  - component: {fileID: 6070580186532436657}
   m_Layer: 10
   m_Name: pCylinder27.002
   m_TagString: Litter
@@ -500,6 +563,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6070580186532436657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713020003852859480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &4378880139773955872
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +596,7 @@ GameObject:
   - component: {fileID: 2578032705568258573}
   - component: {fileID: 4209600346206816230}
   - component: {fileID: 2390926848785886574}
+  - component: {fileID: 6772187661078865205}
   m_Layer: 10
   m_Name: pCylinder27.008
   m_TagString: Litter
@@ -615,6 +699,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6772187661078865205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378880139773955872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &5728385459305353811
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +732,7 @@ GameObject:
   - component: {fileID: 5586639330072496382}
   - component: {fileID: 5264653339576401467}
   - component: {fileID: 4271415510192728965}
+  - component: {fileID: 2728321111328478835}
   m_Layer: 10
   m_Name: pCylinder27.007
   m_TagString: Litter
@@ -730,6 +835,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2728321111328478835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728385459305353811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &6799225974951574077
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +868,7 @@ GameObject:
   - component: {fileID: 1425109281973956098}
   - component: {fileID: 7900264404951733355}
   - component: {fileID: 6210726919354421906}
+  - component: {fileID: 3000287246826759872}
   m_Layer: 10
   m_Name: pCylinder27.004
   m_TagString: Litter
@@ -845,37 +971,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &7743567712920504589
-GameObject:
+--- !u!114 &3000287246826759872
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1645373336069476992}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1645373336069476992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7743567712920504589}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2478224734909577939}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 6799225974951574077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0
 --- !u!1 &7911835484511342522
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +1004,7 @@ GameObject:
   - component: {fileID: 3785033156226261121}
   - component: {fileID: 7322123228665322009}
   - component: {fileID: 8641554166597951962}
+  - component: {fileID: 3698578200712680843}
   m_Layer: 10
   m_Name: pCylinder27.006
   m_TagString: Litter
@@ -991,3 +1107,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3698578200712680843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911835484511342522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8924e90f30544e45a99c7d8aa305b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BurningParticle:
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  m_LavaPosGameObject: {fileID: 0}
+  m_ParentGameObject: {fileID: 0}
+  m_MaxBurningTime: 4
+  m_Timer: 0

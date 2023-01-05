@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-        void Start()
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         OriginalSpeed = Speed;
@@ -57,13 +57,15 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        //Turn
-        transform.Rotate(Vector3.up * m_Look.x * Sensitivity);
+        if (GameControllerManager.Instance.Pause == false)
+        {
+            //Turn
+            transform.Rotate(Vector3.up * m_Look.x * Sensitivity);
 
-        //Look
-        m_LookRotation += (-m_Look.y * Sensitivity);
-        m_LookRotation = Mathf.Clamp(m_LookRotation, -90, 90);
-
+            //Look
+            m_LookRotation += (-m_Look.y * Sensitivity);
+            m_LookRotation = Mathf.Clamp(m_LookRotation, -90, 90);
+        }
     }
 
     private void LateUpdate()
