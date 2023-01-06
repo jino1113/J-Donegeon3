@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
             Panel[1].SetActive(true);
 
 
-            Score[0].text = GameScore.Instance.TimeScore.ToString() + "Mins";
+            Score[0].text = "~" + GameScore.Instance.TimeScore.ToString() + " Mins";
             Score[1].text = GameScore.Instance.DirtyScore.ToString() + "%";
 
             if (GameScore.Instance.TimeScore <= 1 && GameScore.Instance.DirtyScore >= 4)

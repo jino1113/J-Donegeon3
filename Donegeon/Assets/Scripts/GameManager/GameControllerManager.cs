@@ -148,6 +148,8 @@ public class GameControllerManager : MonoBehaviour
             scoreTime = NowTime;
             Debug.Log(scoreTime);
             scoreTime = scoreTime / 60.0f;
+            scoreTime = Math.Ceiling(scoreTime);
+
             Time.timeScale = 1;
             SceneManager.LoadScene("MenuScene");
 

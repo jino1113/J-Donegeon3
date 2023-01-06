@@ -79,9 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BurningParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 442810660568786162, guid: 7ff8a116f88f9364081a6c74232cc6df, type: 3}
+  - {fileID: 6860029325774273341, guid: da9dc009e581bdc48ba8faac271b15b3, type: 3}
+  - {fileID: 3829015885320427267, guid: 924c08ea8668e3e4187750cc34de929f, type: 3}
   m_LavaPosGameObject: {fileID: 0}
   m_ParentGameObject: {fileID: 8042474371898286951}
   m_MaxBurningTime: 5
