@@ -45,6 +45,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39cd1b2680d97640b9801b3abae8004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OverallProgress: {fileID: 0}
+  QuestNameTextList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  NowDirtyScore: 0
+  CleanPercentScore: 0
+  GateOpenScore: 10
+  AnimatorController:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  FogGateGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  SceneName: {fileID: 0}
+  Pause: 0
+  ClearQuestColor: {r: 0.19793521, g: 0.509434, b: 0.08891065, a: 1}
 --- !u!1 &6046048774631126618
 GameObject:
   m_ObjectHideFlags: 0

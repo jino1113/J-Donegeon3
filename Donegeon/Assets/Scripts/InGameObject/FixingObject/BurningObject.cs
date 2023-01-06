@@ -7,6 +7,8 @@ public class BurningObject : MonoBehaviour
 {
     [SerializeField] private List<ParticleSystem>  m_BurningParticle;
     [SerializeField] private GameObject m_LavaPosGameObject;
+    [SerializeField] private GameObject m_ParentGameObject;
+
 
     [Header("Debug")]
     [SerializeField] private float m_MaxBurningTime = 5;
@@ -14,6 +16,7 @@ public class BurningObject : MonoBehaviour
 
     void Start()
     {
+        m_LavaPosGameObject = GameObject.Find("LavaPos");
         m_BurningParticle[0].GetComponent<ParticleSystem>();
         m_BurningParticle[1].GetComponent<ParticleSystem>();
         m_BurningParticle[2].GetComponent<ParticleSystem>();
@@ -29,6 +32,10 @@ public class BurningObject : MonoBehaviour
             m_Timer += Time.deltaTime;
             if (m_Timer >= m_MaxBurningTime)
             {
+                if (m_ParentGameObject != null)
+                {
+                    Destroy(m_ParentGameObject);
+                }
                 Destroy(gameObject);
             }
         }

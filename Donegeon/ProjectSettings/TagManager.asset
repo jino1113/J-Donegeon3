@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lava
+  - Litter
+  - BrokenWall
+  - Blood
+  - Candle
+  - EnvironmentTool
+  - CandleHolder
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,8 +25,8 @@ TagManager:
   - Water
   - Litter
   - Lava
-  - 
-  - 
+  - Candle
+  - Interactable
   - 
   - 
   - 
