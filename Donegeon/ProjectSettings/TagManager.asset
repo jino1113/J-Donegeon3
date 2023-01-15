@@ -12,6 +12,12 @@ TagManager:
   - EnvironmentTool
   - CandleHolder
   - Ground
+  - Wine
+  - Meat
+  - Egg
+  - Mushroom
+  - Vegetable
+  - Potato
   layers:
   - Default
   - TransparentFX

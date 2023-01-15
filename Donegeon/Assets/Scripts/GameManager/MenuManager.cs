@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private List<GameObject> GradeList;
     [SerializeField] private List<Text> Score;
 
+    [SerializeField] private AudioSource AudioSource;
+
     private double DT;
 
 
@@ -31,23 +33,23 @@ public class MenuManager : MonoBehaviour
             Score[0].text = "~" + GameScore.Instance.TimeScore.ToString() + " Mins";
             Score[1].text = GameScore.Instance.DirtyScore.ToString() + "%";
 
-            if (GameScore.Instance.TimeScore <= 1 && GameScore.Instance.DirtyScore >= 4)
+            if (GameScore.Instance.TimeScore <= 30 && GameScore.Instance.DirtyScore >= 95)
             {
                 GradeList[0].SetActive(true);
             }
-            else if (GameScore.Instance.TimeScore <= 2 && GameScore.Instance.DirtyScore >= 3)
+            else if (GameScore.Instance.TimeScore <= 40 && GameScore.Instance.DirtyScore >= 70)
             {
                 GradeList[1].SetActive(true);
             }
-            else if (GameScore.Instance.TimeScore <= 3 && GameScore.Instance.DirtyScore >= 2)
+            else if (GameScore.Instance.TimeScore <= 50 && GameScore.Instance.DirtyScore >= 50)
             {
                 GradeList[2].SetActive(true);
             }
-            else if (GameScore.Instance.TimeScore <= 4 && GameScore.Instance.DirtyScore >= 1)
+            else if (GameScore.Instance.TimeScore <= 60 && GameScore.Instance.DirtyScore >= 20)
             {
                 GradeList[3].SetActive(true);
             }
-            else if (GameScore.Instance.DirtyScore <= 0 || (GameScore.Instance.TimeScore <= 5 && GameScore.Instance.DirtyScore <= 0.9))
+            else if (GameScore.Instance.DirtyScore <= 0 || (GameScore.Instance.TimeScore <= 60 && GameScore.Instance.DirtyScore <= 19))
             {
                 GradeList[4].SetActive(true);
             }
@@ -59,7 +61,6 @@ public class MenuManager : MonoBehaviour
     {
 
     }
-
 
     public void quitGame()
     {

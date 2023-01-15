@@ -22,9 +22,10 @@ public class GameControllerManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> FogGateGameObjects;
 
+    [SerializeField] private GameObject DeadPanelGameObject;
     [SerializeField] private GameObject SceneName;
 
-    public bool Pause,Ending;
+    public bool Pause,Ending,isDead;
     public float CleanPercentScore;
     public double scoreTime;
 
@@ -60,6 +61,7 @@ public class GameControllerManager : MonoBehaviour
     {
         CheckAllQuestObject();
         CleaningPercent();
+        CheckDead();
 
         OverallProgress.text = "Progress: " + CleanPercentScore + "%";
     }
@@ -121,8 +123,39 @@ public class GameControllerManager : MonoBehaviour
         NowDirtyScore += PointArrow.Instance.BrokenWallCount;
         NowDirtyScore += PointArrow.Instance.CandleCount;
 
-        float i = PointArrow.Instance.NowScore / 10f;
+        float i = PointArrow.Instance.NowScore / 4f;
         CleanPercentScore = i;
+    }
+
+    void CheckDead()
+    {
+        if (isDead == true)
+        {
+            DeadPanelGameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Pause = true;
+            Time.timeScale = 0f;
+        }
+        else if (isDead == false)
+        {
+            DeadPanelGameObject.SetActive(false);
+        }
+    }
+
+
+    public void ChangeDead()
+    {
+        if (isDead == true)
+        {
+            isDead = false;
+            Pause = false;
+            Time.timeScale = 1f;
+        }
+        else if (isDead == false)
+        {
+            isDead = true;
+        }
     }
 
     public void SceneCheck()
@@ -157,6 +190,8 @@ public class GameControllerManager : MonoBehaviour
             Ending = true;
         }
     }
+
+
 
     public void DisableCursor()
     {

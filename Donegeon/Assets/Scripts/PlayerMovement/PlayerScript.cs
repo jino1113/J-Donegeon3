@@ -12,7 +12,6 @@ public class PlayerScript : MonoBehaviour
     public float Sensitivity;
     public Animator Animator;
 
-
     [Header("Movement")]
     public float OriginalSpeed;
     public float Speed;
@@ -37,15 +36,12 @@ public class PlayerScript : MonoBehaviour
         m_Look = context.ReadValue<Vector2>();
     }
 
-    public void OnJump()
-    {
-    }
-
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         OriginalSpeed = Speed;
+
     }
 
     private void FixedUpdate()
@@ -122,7 +118,7 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 junpForcesVector3 = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Animator.GetBool("grounded"))
+        if (Input.GetKeyDown(KeyCode.Space) && Animator.GetBool("grounded") == true)
         {
             junpForcesVector3 = Vector3.up * JumpForce;
         }
