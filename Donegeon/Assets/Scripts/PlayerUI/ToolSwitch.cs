@@ -260,6 +260,8 @@ public class ToolSwitch : MonoBehaviour
             Ray CameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, m_CleaningRange, EnvironmentFixingMask))
             {
+                Cooldown = false;
+                StartCoroutine(Wait(0.75f));
                 go = HitInfo.transform.gameObject;
                 go.gameObject.SetActive(false);
 
