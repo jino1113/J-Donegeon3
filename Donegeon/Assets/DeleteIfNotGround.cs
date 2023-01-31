@@ -12,7 +12,16 @@ public class DeleteIfNotGround : MonoBehaviour
     {
         Collider decalCollider = GetComponent<Collider>();
         Physics.IgnoreCollision(decalCollider, decalCollider);
+
         groundCheck();
+    }
+
+    void Update()
+    {
+        if (PointArrow.Instance.Triggers["Recheck"] == true)
+        {
+            groundCheck();
+        }
     }
 
     void groundCheck()

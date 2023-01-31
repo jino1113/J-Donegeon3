@@ -85,11 +85,32 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
     void Start()
     {
         CompassGameObject.SetActive(true);
-        Triggers.Add("Quest1",false);
-        Triggers.Add("Quest2", false);
-        Triggers.Add("Quest3", false);
-        Triggers.Add("Quest4", false);
-        Triggers.Add("Quest5", false);
+        Triggers.Add("Recheck", false);//Collider Recheck
+
+        //Quest list
+        Triggers.Add("Quest1", false);//Litter Quest
+        Triggers.Add("Quest2", false);//Broken Quest
+        Triggers.Add("Quest3", false);//Blood Quest
+        Triggers.Add("Quest4", false);//Bell Quest
+        Triggers.Add("Quest5", false);//Candle Quest
+        //Idle dialogue list
+        Triggers.Add("Quest6", false);//FogGate
+        Triggers.Add("Quest7", false);//Bell
+        Triggers.Add("Quest8", false);//
+        Triggers.Add("Quest9", false);//
+        //Die
+        Triggers.Add("Quest10", false);//Axe
+        Triggers.Add("Quest11", false);//Fire
+        Triggers.Add("Quest12", false);//Fall
+        Triggers.Add("Quest13", false);//Lava
+        Triggers.Add("Quest14", false);//Stew
+        //
+        Triggers.Add("Quest15", false);//
+        Triggers.Add("Quest16", false);
+        Triggers.Add("Quest17", false);
+        Triggers.Add("Quest18", false);
+        Triggers.Add("Quest19", false);
+        Triggers.Add("Quest20", false);
 
 
 
@@ -115,6 +136,11 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
 
 
         CompassControll();
+
+        if (Triggers["Recheck"] != true)
+        {
+            Triggers["Recheck"] = false;
+        }
     }
 
     void CompassControll()

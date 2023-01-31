@@ -30,10 +30,10 @@ public class ToolSwitch : MonoBehaviour
     private GameObject go;
 
     [Header("Fixing Object")]
-    public LayerMask EnvironmentFixingMask;
-    public LayerMask BloodMask;
-    public LayerMask WaterMask;
-    public LayerMask CandleMask;
+    [SerializeField] private LayerMask EnvironmentFixingMask;
+    [SerializeField] private LayerMask BloodMask;
+    [SerializeField] private LayerMask WaterMask;
+    [SerializeField] private LayerMask CandleMask;
 
     [SerializeField] private ParticleSystem BloodParticleSystem;
     [SerializeField] private ParticleSystem WaterParticleSystem;
@@ -46,10 +46,10 @@ public class ToolSwitch : MonoBehaviour
     public GameObject MopGameObjectObject;
 
     [Header("Interact Object")] 
-    [SerializeField] private bool Fire;
     [SerializeField] private bool Cooldown;
     public bool InteractBool;
     [SerializeField] private LayerMask InteractableMask;
+    [SerializeField] private LayerMask LeverLayerMask;
 
 
     public static ToolSwitch Instance;
@@ -223,15 +223,19 @@ public class ToolSwitch : MonoBehaviour
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.freezeRotation = true;
             }
-
             else if (Physics.Raycast(CameraRay, out RaycastHit _, PickupRange, InteractableMask))
             {
                 Cooldown = false;
-                Debug.Log("SpawnBoxNow");
                 InteractBool = true;
-                StartCoroutine(Wait(3f));
+                StartCoroutine(AnimationCooldown(3f));
             }
+            else if (Physics.Raycast(CameraRay, out RaycastHit Hit, PickupRange, LeverLayerMask))
+            {
+                DisablerGameobject disablerGameobject;
+                disablerGameobject = Hit.transform.gameObject.GetComponent<DisablerGameobject>();
 
+                disablerGameobject.kindle = !disablerGameobject.kindle;
+            }
             else
             {
                 MovementAnimator.SetBool("UseTool", false);
@@ -261,7 +265,7 @@ public class ToolSwitch : MonoBehaviour
             if (Physics.Raycast(CameraRay, out RaycastHit HitInfo, m_CleaningRange, EnvironmentFixingMask))
             {
                 Cooldown = false;
-                StartCoroutine(Wait(0.75f));
+                StartCoroutine(AnimationCooldown(0.75f));
                 go = HitInfo.transform.gameObject;
                 go.gameObject.SetActive(false);
 
@@ -276,7 +280,7 @@ public class ToolSwitch : MonoBehaviour
             {
                 if (Physics.Raycast(cameraRay,out RaycastHit hitInfoBloodHit, m_CleaningRange, BloodMask))
                 {
-                    StartCoroutine(Wait(0.75f));
+                    StartCoroutine(AnimationCooldown(0.75f));
                     //Destroy blood stain on map
                     ++BloodStage;
                     go = hitInfoBloodHit.transform.gameObject;
@@ -287,7 +291,7 @@ public class ToolSwitch : MonoBehaviour
             if (Physics.Raycast(cameraRay, out _, m_CleaningRange, WaterMask))
             {
                 Cooldown = false;
-                StartCoroutine(Wait(0.75f));
+                StartCoroutine(AnimationCooldown(0.75f));
                 Instantiate(WaterParticleSystem, ParticlePosGameObject.transform.position,Quaternion.identity);
                 //Reset blood stain
                 BloodStage = 0f;
@@ -295,13 +299,13 @@ public class ToolSwitch : MonoBehaviour
             if (BloodStage != 0)
             {
                 Cooldown = false;
-                StartCoroutine(Wait(0.75f));
+                StartCoroutine(AnimationCooldown(0.75f));
                 Instantiate(BloodParticleSystem, ParticlePosGameObject.transform.position,Quaternion.identity);
             }
             else
             {
                 Cooldown = false;
-                StartCoroutine(Wait(0.75f));
+                StartCoroutine(AnimationCooldown(0.75f));
                 Instantiate(WaterParticleSystem, ParticlePosGameObject.transform.position, Quaternion.identity);
             }
         }
@@ -311,7 +315,7 @@ public class ToolSwitch : MonoBehaviour
             Ray cameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(cameraRay, out RaycastHit hit, m_CleaningRange, CandleMask))
             {
-                hit.transform.gameObject.GetComponent<LightCandle>().kindle = true;
+                hit.transform.gameObject.GetComponent<DisablerGameobject>().kindle = true;
             }
         }
     }
@@ -337,7 +341,7 @@ public class ToolSwitch : MonoBehaviour
         };
     }
 
-    IEnumerator Wait(float time)
+    IEnumerator AnimationCooldown(float time)
     {
         yield return new WaitForSeconds(time);
         Cooldown = true;

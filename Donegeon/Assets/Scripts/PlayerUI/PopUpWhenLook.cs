@@ -28,6 +28,23 @@ public class PopUpWhenLook : MonoBehaviour
 
     void Update()
     {
+        FixingProgressBar();
+    }
+
+
+    void QuestOnLook()
+    {
+
+    }
+
+    void HightlightOnLook()
+    {
+
+    }
+
+
+    void FixingProgressBar()
+    {
         Ray CameraRay = PlayerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         if (Physics.Raycast(CameraRay, out RaycastHit hitInfo, Range, Mask))
@@ -51,5 +68,4 @@ public class PopUpWhenLook : MonoBehaviour
             TextObjectName.text = " ";
         }
     }
-
 }
