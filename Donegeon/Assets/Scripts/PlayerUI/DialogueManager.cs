@@ -1,58 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     public List<string> sentence;
-    [SerializeField] private GameObject DialogueGameObject;
-    [SerializeField] private Text DialogueText;
-
-    private bool isEnd;
 
 
+    private bool locker;
     void Start()
     {
+        locker = false;
         sentence = new List<string>();
     }
 
-    public void StartDialogue(int number)
+    public void StartDialogue(string sentenceInfo,Text dialogueText,GameObject spirteGameObject, GameObject setActiveGameObject)
     {
-        StartCoroutine(TypeSentence(sentence[number]));
-
-    }
-
-    public void DisplaySentence()
-    {
+        Debug.Log("Prepare to type");
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentenceInfo, dialogueText, spirteGameObject, setActiveGameObject));
         sentence.Clear();
-
     }
 
-    public void EndDialogue()
+    IEnumerator WaitForStart(GameObject firstGameObject, GameObject secondGameObject)
     {
-        if (isEnd == false)
-        {
-            isEnd = true;
-        }
+        yield return new WaitForSeconds(5f);
+        firstGameObject.SetActive(false);
+        secondGameObject.SetActive(false);
     }
 
-    IEnumerator WaitForStart()
+    IEnumerator TypeSentence(string sentence,Text dialogueText,GameObject spriteGameObject, GameObject setActiveGameObject)
     {
-        yield return new WaitForSeconds(0.5f);
-    }
-
-
-
-    IEnumerator TypeSentence(string sentence)
-    {
-
-        DialogueText.text = "";
+        Debug.Log("Start typing");
+        spriteGameObject.SetActive(true);
+        Debug.Log("Active sprite");
+        setActiveGameObject.SetActive(true);
+        dialogueText.text = "";
+        int i = 0;
         foreach (char letter in sentence.ToCharArray())
         {
+            dialogueText.text += letter;
+            Debug.Log("Now typing" + ", Max char is " + sentence.Length);
+            i++;
+            if (i >= sentence.Length)
+            {
+                Debug.Log("Stop typing");
+                StopAllCoroutines();
 
-            DialogueText.text += letter;
-            yield return null;
+                StartCoroutine(WaitForStart(spriteGameObject,setActiveGameObject));
+
+            }
+            yield return new WaitForSeconds(0.035f);
         }
     }
 }

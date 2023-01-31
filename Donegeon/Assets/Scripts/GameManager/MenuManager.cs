@@ -49,7 +49,7 @@ public class MenuManager : MonoBehaviour
             {
                 GradeList[3].SetActive(true);
             }
-            else if (GameScore.Instance.DirtyScore <= 0 || (GameScore.Instance.TimeScore <= 60 && GameScore.Instance.DirtyScore <= 19))
+            else if (GameScore.Instance.DirtyScore <= 0 || (GameScore.Instance.TimeScore <= 60 && GameScore.Instance.DirtyScore <= 19.99))
             {
                 GradeList[4].SetActive(true);
             }

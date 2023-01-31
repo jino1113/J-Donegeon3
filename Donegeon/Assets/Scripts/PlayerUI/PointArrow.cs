@@ -35,6 +35,7 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
     public int LitterCount,BrokenWallCount,BloodCount,CandleCount,CandleHolderCount;
     public static PointArrow Instance;
 
+    private bool starting;
     private void Awake()
     {
         if (Instance != null)
@@ -84,6 +85,7 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
 
     void Start()
     {
+        starting = true;
         CompassGameObject.SetActive(true);
         Triggers.Add("Recheck", false);//Collider Recheck
 
@@ -115,6 +117,7 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
 
 
         NowScore = 6f;
+        StartCoroutine(waitStart());
     }
 
     void Update()
@@ -126,12 +129,14 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         PreHoldCandleHolderGameObject = GameObject.FindGameObjectsWithTag("CandleHolder");
         PreHoldBellGameObject = GameObject.FindGameObjectWithTag("EnvironmentTool");
 
-
-        AddToLitterPreHold();
-        AddToBrokenWallPreHold();
-        AddToBloodPreHold();
-        AddToCandleHolderPreHold();
-        AddToCurrentCandle();
+        if (starting == false)
+        {
+            AddToLitterPreHold();
+            AddToBrokenWallPreHold();
+            AddToBloodPreHold();
+            AddToCandleHolderPreHold();
+            AddToCurrentCandle();
+        }
         setBellPosition();
 
 
@@ -283,5 +288,17 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
     void setBellPosition()
     {
         CurrentBellGameObject = PreHoldBellGameObject.transform;
+    }
+
+
+    IEnumerator waitStart()
+    {
+        yield return new WaitForSeconds(3);
+        AddToLitterPreHold();
+        AddToBrokenWallPreHold();
+        AddToBloodPreHold();
+        AddToCandleHolderPreHold();
+        AddToCurrentCandle();
+        starting = false;
     }
 }

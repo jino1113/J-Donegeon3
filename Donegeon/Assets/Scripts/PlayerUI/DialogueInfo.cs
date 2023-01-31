@@ -10,5 +10,5 @@ public class DialogueInfo
 {
     public string Sentence;
     public string Info;
-    public List<Image> Sprite;
+    public List<GameObject> Sprite;
 }
