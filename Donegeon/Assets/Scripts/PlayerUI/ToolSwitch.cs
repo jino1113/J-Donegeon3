@@ -50,7 +50,10 @@ public class ToolSwitch : MonoBehaviour
     public bool InteractBool;
     [SerializeField] private LayerMask InteractableMask;
     [SerializeField] private LayerMask LeverLayerMask;
+    [SerializeField] private LayerMask ChestLayerMask;
+    [SerializeField] private LayerMask MimicLayerMask;
 
+    private bool waiting;
 
     public static ToolSwitch Instance;
 
@@ -222,6 +225,10 @@ public class ToolSwitch : MonoBehaviour
                 MovementAnimator.SetBool("UseTool", true);
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.freezeRotation = true;
+                if (HitInfo.transform.tag == "Wine")
+                {
+                    PointArrow.Instance.Triggers["Quest21"] = true;
+                }
             }
             else if (Physics.Raycast(CameraRay, out RaycastHit _, PickupRange, InteractableMask))
             {
@@ -235,6 +242,19 @@ public class ToolSwitch : MonoBehaviour
                 disablerGameobject = Hit.transform.gameObject.GetComponent<DisablerGameobject>();
 
                 disablerGameobject.kindle = !disablerGameobject.kindle;
+            }
+            else if (Physics.Raycast(CameraRay, out RaycastHit HitChest, PickupRange, ChestLayerMask))
+            {
+                HitChest.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = true;
+            }
+            else if (Physics.Raycast(CameraRay, out RaycastHit HitMimic, PickupRange, MimicLayerMask))
+            {
+                HitMimic.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = false;
+                StartCoroutine(WaitChestEnumerator());
+                if (waiting == false)
+                {
+                    HitMimic.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = true;
+                }
             }
             else
             {
@@ -347,5 +367,10 @@ public class ToolSwitch : MonoBehaviour
         Cooldown = true;
     }
 
-
+    IEnumerator WaitChestEnumerator()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(0.5f);
+        waiting = false;
+    }
 }

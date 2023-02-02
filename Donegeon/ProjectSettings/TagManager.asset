@@ -18,6 +18,8 @@ TagManager:
   - Mushroom
   - Vegetable
   - Potato
+  - Destroy
+  - Crown
   layers:
   - Default
   - TransparentFX
@@ -35,10 +37,10 @@ TagManager:
   - Interactable
   - Lever
   - Golden
-  - 
-  - 
-  - 
-  - 
+  - Fog
+  - Painting
+  - Mimic
+  - Chest
   - 
   - 
   - 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -58,5 +59,15 @@ public class BurningObject : MonoBehaviour
             m_BurningParticle[1].Play();
             m_BurningParticle[2].Play();
         }
+
+        if (other.gameObject.tag == "Destroy")
+        {
+            if (m_ParentGameObject != null)
+            {
+                Destroy(m_ParentGameObject);
+            }
+            Destroy(gameObject);
+        }
     }
+
 }
