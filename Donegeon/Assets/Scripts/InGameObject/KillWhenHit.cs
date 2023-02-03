@@ -5,8 +5,6 @@ using UnityEditor;
 using UnityEngine;
 
 
-[CustomEditor(typeof(KillWhenHit))]
-
 public class KillWhenHit : MonoBehaviour
 {
     [SerializeField] private GameObject PlayerModel;
