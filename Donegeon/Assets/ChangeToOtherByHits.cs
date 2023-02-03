@@ -42,6 +42,7 @@ public class ChangeToOtherByHits : MonoBehaviour
                 SoupList[2].SetActive(true);
                 SoupList[1].SetActive(false);
                 SoupList[0].SetActive(false);
+                GameControllerManager.Instance.SecretScore += 1;
 
             }
             if (Meat >= 1 && Vegetable >= 2 && Potato >= 3 && Mushroom >= 2 && CheckSoup == false)
@@ -51,6 +52,8 @@ public class ChangeToOtherByHits : MonoBehaviour
                 SoupList[0].SetActive(false);
                 StartCoroutine(Wait(1f));
                 PointArrow.Instance.Triggers["Quest20"] = true;
+                GameControllerManager.Instance.SecretScore += 1;
+
             }
         }
     }

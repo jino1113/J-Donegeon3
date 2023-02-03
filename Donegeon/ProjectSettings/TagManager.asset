@@ -20,6 +20,11 @@ TagManager:
   - Potato
   - Destroy
   - Crown
+  - StoryPaper
+  - Hammer
+  - Glove
+  - MusicBox
+  - Disc
   layers:
   - Default
   - TransparentFX

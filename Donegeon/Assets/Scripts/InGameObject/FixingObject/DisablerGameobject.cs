@@ -13,6 +13,7 @@ public class DisablerGameobject : MonoBehaviour
 
     void Start()
     {
+        m_Animator = GetComponent<Animator>();
         kindle = false;
     }
 
@@ -32,9 +33,10 @@ public class DisablerGameobject : MonoBehaviour
                 {
                     Item.SetActive(true);
                 }
-                if (m_Animator != null && m_Animator.GetBool("Pull") != false)
+                if (m_Animator != null && m_Animator.GetBool("Pull") == false)
                 {
-                    m_Animator.SetBool("Pull",true);
+                    Debug.Log("Pull0");
+                    m_Animator.SetBool("Pull", true);
                 }
 
                 PointArrow.Instance.Triggers["Recheck"] = true;
@@ -51,8 +53,9 @@ public class DisablerGameobject : MonoBehaviour
                     {
                         Item.SetActive(false);
                     }
-                    if (m_Animator != null && m_Animator.GetBool("Pull") != true)
+                    if (m_Animator != null && m_Animator.GetBool("Pull") == true)
                     {
+                        Debug.Log("Pull1");
                         m_Animator.SetBool("Pull", false);
                     }
                     PointArrow.Instance.Triggers["Recheck"] = true;
@@ -69,8 +72,10 @@ public class DisablerGameobject : MonoBehaviour
                 {
                     Item.SetActive(false);
                 }
-                if (m_Animator != null && m_Animator.GetBool("Pull") != false)
+                if (m_Animator != null && m_Animator.GetBool("Pull") == false)
                 {
+                    Debug.Log("Pull2");
+
                     m_Animator.SetBool("Pull", true);
                 }
                 PointArrow.Instance.Triggers["Recheck"] = true;
@@ -87,8 +92,10 @@ public class DisablerGameobject : MonoBehaviour
                     {
                         Item.SetActive(true);
                     }
-                    if (m_Animator != null && m_Animator.GetBool("Pull") != true)
+                    if (m_Animator != null && m_Animator.GetBool("Pull") == true)
                     {
+                        Debug.Log("Pull3");
+
                         m_Animator.SetBool("Pull", false);
                     }
                     PointArrow.Instance.Triggers["Recheck"] = true;

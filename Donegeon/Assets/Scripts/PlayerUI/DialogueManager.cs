@@ -9,7 +9,6 @@ public class DialogueManager : MonoBehaviour
 {
     public List<string> sentence;
 
-
     private bool locker;
     void Start()
     {
@@ -34,20 +33,16 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence,Text dialogueText,GameObject spriteGameObject, GameObject setActiveGameObject)
     {
-        Debug.Log("Start typing");
         spriteGameObject.SetActive(true);
-        Debug.Log("Active sprite");
         setActiveGameObject.SetActive(true);
         dialogueText.text = "";
         int i = 0;
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            Debug.Log("Now typing" + ", Max char is " + sentence.Length);
             i++;
             if (i >= sentence.Length)
             {
-                Debug.Log("Stop typing");
                 StopAllCoroutines();
 
                 StartCoroutine(WaitForStart(spriteGameObject,setActiveGameObject));

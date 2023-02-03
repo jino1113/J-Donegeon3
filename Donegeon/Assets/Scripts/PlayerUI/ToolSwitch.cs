@@ -22,6 +22,8 @@ public class ToolSwitch : MonoBehaviour
 
     [SerializeField] private Camera PlayerCam;
     [SerializeField] private Transform PickupTarget;
+    [SerializeField] private List<GameObject> PaperList;
+
 
     [Space]
     [SerializeField] private float PickupRange;
@@ -52,6 +54,10 @@ public class ToolSwitch : MonoBehaviour
     [SerializeField] private LayerMask LeverLayerMask;
     [SerializeField] private LayerMask ChestLayerMask;
     [SerializeField] private LayerMask MimicLayerMask;
+    [SerializeField] private LayerMask GoldenLayerMask;
+
+    [SerializeField] private Material[] GoldenMaterial;
+    [SerializeField] private GameObject[] HandGameObjects;
 
     private bool waiting;
 
@@ -87,11 +93,13 @@ public class ToolSwitch : MonoBehaviour
         int lasttool = toolselect;
         InteractBool = false;
 
-
-        if (Cooldown == true)
+        if (GameControllerManager.Instance.Pause == false)
         {
-            Tool0Action();
-            ChangeNUse();
+            if (Cooldown == true)
+            {
+                Tool0Action();
+                ChangeNUse();
+            }
         }
     }
 
@@ -229,6 +237,11 @@ public class ToolSwitch : MonoBehaviour
                 {
                     PointArrow.Instance.Triggers["Quest21"] = true;
                 }
+                if (HitInfo.transform.gameObject.tag == "StoryPaper")
+                {
+                    HitInfo.transform.gameObject.GetComponent<holdingPaper>().isHolding = true;
+                }
+
             }
             else if (Physics.Raycast(CameraRay, out RaycastHit _, PickupRange, InteractableMask))
             {
@@ -246,6 +259,28 @@ public class ToolSwitch : MonoBehaviour
             else if (Physics.Raycast(CameraRay, out RaycastHit HitChest, PickupRange, ChestLayerMask))
             {
                 HitChest.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = true;
+            }
+            else if (Physics.Raycast(CameraRay, out RaycastHit HitGoldenItem, PickupRange, GoldenLayerMask))
+            {
+                if (HitGoldenItem.transform.gameObject.tag == "Glove")
+                {
+                    Debug.Log("Change Glove");
+                    Destroy(HitGoldenItem.transform.gameObject);
+                    HandGameObjects[0].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
+                    HandGameObjects[1].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
+                    HandGameObjects[2].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
+                    HandGameObjects[3].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
+                    GameControllerManager.Instance.SecretScore += 1;
+                }
+                if (HitGoldenItem.transform.gameObject.tag == "Hammer")
+                {
+                    Destroy(HitGoldenItem.transform.gameObject);
+                    Debug.Log("Change Hammer");
+                    HandGameObjects[4].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[1];
+                    GameControllerManager.Instance.SecretScore += 1;
+
+                }
+
             }
             else if (Physics.Raycast(CameraRay, out RaycastHit HitMimic, PickupRange, MimicLayerMask))
             {

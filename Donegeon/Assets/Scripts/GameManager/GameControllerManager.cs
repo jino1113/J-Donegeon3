@@ -25,14 +25,19 @@ public class GameControllerManager : MonoBehaviour
     [SerializeField] private GameObject DeadPanelGameObject;
     [SerializeField] private GameObject SceneName;
 
+    [SerializeField] private AudioSource AudioSource;
+    [SerializeField] private AudioClip AudioClips;
+
     public bool Pause,Ending,isDead;
     public float CleanPercentScore;
     public double scoreTime;
+    public int SecretScore;
+
     public List<int> DieCounter;
 
     bool open = false;
 
-
+    private int OldSecret;
     public Color ClearQuestColor;
 
     public static GameControllerManager Instance;
@@ -50,6 +55,8 @@ public class GameControllerManager : MonoBehaviour
 
     void Start()
     {
+        OldSecret = 0;
+        SecretScore = 0;
         Ending = false;
         Pause = false;
         NowTime = 0;
@@ -74,7 +81,20 @@ public class GameControllerManager : MonoBehaviour
         CleaningPercent();
         CheckDead();
 
+        if (Pause == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+        }
+
         OverallProgress.text = "Progress: " + CleanPercentScore + "%";
+
+        if (SecretScore > OldSecret)
+        {
+            PlayQuestSFX();
+            OldSecret = SecretScore;
+        }
     }
 
     void CheckAllQuestObject()
@@ -124,6 +144,8 @@ public class GameControllerManager : MonoBehaviour
             StartCoroutine(FogGateOpen());
             StartCoroutine(WaitTimer());
             AnimatorController = null;
+            PlayQuestSFX();
+
         }
 
         if (open == true || Input.GetKeyDown(KeyCode.O))
@@ -138,10 +160,8 @@ public class GameControllerManager : MonoBehaviour
             }
             StartCoroutine(ArenaGateOpen());
             AnimatorController = null;
+            PlayQuestSFX();
         }
-
-
-
     }
 
     void CleaningPercent()
@@ -229,6 +249,14 @@ public class GameControllerManager : MonoBehaviour
 
             StartCoroutine(GameReloadTimer());
             Ending = true;
+        }
+    }
+
+    void PlayQuestSFX()
+    {
+        if (AudioSource.isPlaying == false)
+        {
+            AudioSource.PlayOneShot(AudioClips);
         }
     }
 
