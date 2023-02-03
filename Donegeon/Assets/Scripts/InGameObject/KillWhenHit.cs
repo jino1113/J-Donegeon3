@@ -29,9 +29,61 @@ public class KillWhenHit : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player")
         {
-            Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
-            PlayerNowPos.transform.position = RespawnPoint.transform.position;
-            GameControllerManager.Instance.isDead = true;
+            if (Axe == true)
+            {
+                PointArrow.Instance.Triggers["Quest10"] = true;
+                GameControllerManager.Instance.DieCounter[0] += 1;
+
+                Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
+                PlayerNowPos.transform.position = RespawnPoint.transform.position;
+                GameControllerManager.Instance.isDead = true;
+            }
+            else if (Fire == true)
+            {
+                PointArrow.Instance.Triggers["Quest11"] = true;
+                GameControllerManager.Instance.DieCounter[1] += 1;
+
+                Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
+                PlayerNowPos.transform.position = RespawnPoint.transform.position;
+                GameControllerManager.Instance.isDead = true;
+            }
+            else if (Lava == true)
+            {
+                PointArrow.Instance.Triggers["Quest12"] = true;
+                GameControllerManager.Instance.DieCounter[2] += 1;
+
+                Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
+                PlayerNowPos.transform.position = RespawnPoint.transform.position;
+                GameControllerManager.Instance.isDead = true;
+            }
+            else if (Stew == true)
+            {
+                PointArrow.Instance.Triggers["Quest13"] = true;
+                GameControllerManager.Instance.DieCounter[3] += 1;
+
+                Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
+                PlayerNowPos.transform.position = RespawnPoint.transform.position;
+                GameControllerManager.Instance.isDead = true;
+            }
+            else if (Fall == true)
+            {
+                PointArrow.Instance.Triggers["Quest14"] = true;
+                GameControllerManager.Instance.DieCounter[4] += 1;
+
+                Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
+                PlayerNowPos.transform.position = RespawnPoint.transform.position;
+                GameControllerManager.Instance.isDead = true;
+            }
+            else if (Spike == true)
+            {
+                PointArrow.Instance.Triggers["Quest15"] = true;
+                GameControllerManager.Instance.DieCounter[5] += 1;
+
+                Instantiate(PlayerModel, collider.transform.position, Quaternion.identity);
+                PlayerNowPos.transform.position = RespawnPoint.transform.position;
+                GameControllerManager.Instance.isDead = true;
+            }
+
         }
     }
 }

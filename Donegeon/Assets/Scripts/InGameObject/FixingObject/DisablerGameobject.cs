@@ -38,9 +38,9 @@ public class DisablerGameobject : MonoBehaviour
                 }
 
                 PointArrow.Instance.Triggers["Recheck"] = true;
-                PointArrow.Instance.Triggers["Recheck"] = false;
+                StartCoroutine(WaitFalse());
 
-                break;
+                    break;
             }
             case true:
             {
@@ -56,7 +56,7 @@ public class DisablerGameobject : MonoBehaviour
                         m_Animator.SetBool("Pull", false);
                     }
                     PointArrow.Instance.Triggers["Recheck"] = true;
-                    PointArrow.Instance.Triggers["Recheck"] = false;
+                    StartCoroutine(WaitFalse());
 
                 }
 
@@ -74,9 +74,9 @@ public class DisablerGameobject : MonoBehaviour
                     m_Animator.SetBool("Pull", true);
                 }
                 PointArrow.Instance.Triggers["Recheck"] = true;
-                PointArrow.Instance.Triggers["Recheck"] = false;
+                StartCoroutine(WaitFalse());
 
-                break;
+                    break;
             }
             case false:
             {
@@ -92,10 +92,16 @@ public class DisablerGameobject : MonoBehaviour
                         m_Animator.SetBool("Pull", false);
                     }
                     PointArrow.Instance.Triggers["Recheck"] = true;
-                    PointArrow.Instance.Triggers["Recheck"] = false;
+                    StartCoroutine(WaitFalse());
                 }
                 break;
             }
         }
+    }
+
+    IEnumerator WaitFalse()
+    {
+        yield return new WaitForSeconds(0.5f);
+        PointArrow.Instance.Triggers["Recheck"] = false;
     }
 }

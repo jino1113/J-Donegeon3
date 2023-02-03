@@ -98,21 +98,28 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         //Idle dialogue list
         Triggers.Add("Quest6", false);//FogGate
         Triggers.Add("Quest7", false);//Bell
-        Triggers.Add("Quest8", false);//
+        Triggers.Add("Quest8", false);//Painting
         Triggers.Add("Quest9", false);//
         //Die
         Triggers.Add("Quest10", false);//Axe
         Triggers.Add("Quest11", false);//Fire
-        Triggers.Add("Quest12", false);//Fall
-        Triggers.Add("Quest13", false);//Lava
-        Triggers.Add("Quest14", false);//Stew
-        //
-        Triggers.Add("Quest15", false);//
-        Triggers.Add("Quest16", false);
-        Triggers.Add("Quest17", false);
-        Triggers.Add("Quest18", false);
-        Triggers.Add("Quest19", false);
-        Triggers.Add("Quest20", false);
+        Triggers.Add("Quest12", false);//Lava
+        Triggers.Add("Quest13", false);//Stew
+        Triggers.Add("Quest14", false);//Fall
+        Triggers.Add("Quest15", false);//Spike
+        Triggers.Add("Quest16", false);//Streak 3
+        Triggers.Add("Quest17", false);//Streak 4
+        Triggers.Add("Quest18", false);//Streak 5
+        //cooking
+        Triggers.Add("Quest19", false);//Enter Cook zone
+        Triggers.Add("Quest20", false);//Cook Good
+        Triggers.Add("Quest21", false);//Wine pickup
+        Triggers.Add("Quest22", false);//Wine break
+        //Event
+        Triggers.Add("Quest23", false);//Arena open
+        Triggers.Add("Quest24", false);//Aye founded
+        Triggers.Add("Quest25", false);//
+
 
 
 

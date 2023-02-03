@@ -28,6 +28,10 @@ public class GameControllerManager : MonoBehaviour
     public bool Pause,Ending,isDead;
     public float CleanPercentScore;
     public double scoreTime;
+    public List<int> DieCounter;
+
+    bool open = false;
+
 
     public Color ClearQuestColor;
 
@@ -49,6 +53,13 @@ public class GameControllerManager : MonoBehaviour
         Ending = false;
         Pause = false;
         NowTime = 0;
+
+        DieCounter[0] = 0;
+        DieCounter[1] = 0;
+        DieCounter[2] = 0;
+        DieCounter[3] = 0;
+        DieCounter[4] = 0;
+        DieCounter[5] = 0;
 
     }
 
@@ -98,21 +109,39 @@ public class GameControllerManager : MonoBehaviour
             }
         }
 
+
         if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true
             && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] == true && PointArrow.Instance.NowScore >= GateOpenScore || Input.GetKeyDown(KeyCode.P))
         {
             if (AnimatorController != null)
             {
-                int index = 0;
-                foreach (var VARIABLE in AnimatorController)
+                for (int index = 0; index <= 17; index++)
                 {
                     AnimatorController[index].SetBool("Fade",true);
                     index++;
                 }
             }
             StartCoroutine(FogGateOpen());
+            StartCoroutine(WaitTimer());
             AnimatorController = null;
         }
+
+        if (open == true || Input.GetKeyDown(KeyCode.O))
+        {
+            if (AnimatorController != null)
+            {
+                for (int index = 18; index <= 26; index++)
+                {
+                    AnimatorController[index].SetBool("Fade", true);
+                    index++;
+                }
+            }
+            StartCoroutine(ArenaGateOpen());
+            AnimatorController = null;
+        }
+
+
+
     }
 
     void CleaningPercent()
@@ -151,6 +180,18 @@ public class GameControllerManager : MonoBehaviour
             isDead = false;
             Pause = false;
             Time.timeScale = 1f;
+            if (DieCounter[0] + DieCounter[1] + DieCounter[2] + DieCounter[3] + DieCounter[4] + DieCounter[5] == 3)
+            {
+                PointArrow.Instance.Triggers["Quest16"] = true;
+            }
+            if (DieCounter[0] + DieCounter[1] + DieCounter[2] + DieCounter[3] + DieCounter[4] + DieCounter[5] == 4)
+            {
+                PointArrow.Instance.Triggers["Quest17"] = true;
+            }
+            if (DieCounter[0] + DieCounter[1] + DieCounter[2] + DieCounter[3] + DieCounter[4] + DieCounter[5] == 5)
+            {
+                PointArrow.Instance.Triggers["Quest18"] = true;
+            }
         }
         else if (isDead == false)
         {
@@ -191,8 +232,6 @@ public class GameControllerManager : MonoBehaviour
         }
     }
 
-
-
     public void DisableCursor()
     {
         Time.timeScale = 1;
@@ -204,10 +243,24 @@ public class GameControllerManager : MonoBehaviour
 
     IEnumerator FogGateOpen()
     {
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(7);
 
         FogGateGameObjects[0].SetActive(false);
         FogGateGameObjects[1].SetActive(false);
+    }
+
+    IEnumerator WaitTimer()
+    {
+        yield return new WaitForSeconds(300);
+        open = true;
+    }
+
+    IEnumerator ArenaGateOpen()
+    {
+        PointArrow.Instance.Triggers["Quest23"] = true;
+        yield return new WaitForSeconds(7);
+        FogGateGameObjects[2].SetActive(false);
+
     }
 
     IEnumerator GameReloadTimer()

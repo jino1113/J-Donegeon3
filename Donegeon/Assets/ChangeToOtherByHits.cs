@@ -50,7 +50,7 @@ public class ChangeToOtherByHits : MonoBehaviour
                 SoupList[1].SetActive(true);
                 SoupList[0].SetActive(false);
                 StartCoroutine(Wait(1f));
-
+                PointArrow.Instance.Triggers["Quest20"] = true;
             }
         }
     }

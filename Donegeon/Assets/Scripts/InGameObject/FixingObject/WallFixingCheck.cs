@@ -27,7 +27,7 @@ public class WallFixingCheck : MonoBehaviour
             WallList[1].SetActive(true);
             WallList[0].SetActive(false);
         }
-        if (!WallList[1].activeSelf && !WallList[0].activeSelf && FixingProgress == 25)
+        else if (!WallList[1].activeSelf && !WallList[0].activeSelf && FixingProgress == 25)
         {
             Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
             Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
@@ -36,7 +36,7 @@ public class WallFixingCheck : MonoBehaviour
             WallList[2].SetActive(true);
             WallList[1].SetActive(false);
         }
-        if (!WallList[2].activeSelf && !WallList[1].activeSelf && !WallList[0].activeSelf && FixingProgress == 50)
+        else if (!WallList[2].activeSelf && !WallList[1].activeSelf && !WallList[0].activeSelf && FixingProgress == 50)
         {
             Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
             Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
@@ -45,7 +45,7 @@ public class WallFixingCheck : MonoBehaviour
             WallList[3].SetActive(true);
             WallList[2].SetActive(false);
         }
-        if (!WallList[3].activeSelf && !WallList[2].activeSelf && !WallList[1].activeSelf && !WallList[0].activeSelf && FixingProgress == 75)
+        else if (!WallList[3].activeSelf && !WallList[2].activeSelf && !WallList[1].activeSelf && !WallList[0].activeSelf && FixingProgress == 75)
         {
             Instantiate(ps[0], ParticlePos.transform.position, Quaternion.identity);
             Instantiate(ps[1], ParticlePos.transform.position, Quaternion.identity);
@@ -54,7 +54,7 @@ public class WallFixingCheck : MonoBehaviour
             WallList[4].SetActive(true);
             WallList[3].SetActive(false);
         }
-        if (WallList[4].activeSelf)
+        else if (WallList[4].activeSelf)
         {
             Destroy(WallList[0]);
             Destroy(WallList[1]);

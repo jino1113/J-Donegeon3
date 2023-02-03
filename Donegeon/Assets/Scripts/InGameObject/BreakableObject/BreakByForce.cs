@@ -26,6 +26,10 @@ public class BreakByForce : MonoBehaviour
             Instantiate(breakVersion, transform.position, transform.rotation);
             rb.AddExplosionForce(10f, Vector3.zero, 0f);
             Destroy(gameObject);
+            if (this.gameObject.tag == "Wine")
+            {
+                PointArrow.Instance.Triggers["Quest22"] = true;
+            }
         }
     }
 }
