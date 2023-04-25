@@ -142,7 +142,7 @@ public class GameControllerManager : MonoBehaviour
             StartCoroutine(FogGateOpen());
             StartCoroutine(WaitTimer());
             AnimatorController = null;
-            PlayQuestSFX();
+           // PlayQuestSFX();
 
         }
 
@@ -158,7 +158,7 @@ public class GameControllerManager : MonoBehaviour
             }
             StartCoroutine(ArenaGateOpen());
             AnimatorController = null;
-            PlayQuestSFX();
+            //PlayQuestSFX();
         }
     }
 

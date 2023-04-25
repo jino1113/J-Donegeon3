@@ -198,7 +198,13 @@ public class DialogueTrigger : MonoBehaviour
             TriggerDialogue(23);
             LockerBools[23] = true;
         }
-        
+        //Entry Arena 
+        if (PointArrow.Instance.Triggers["Quest25"] == true && LockerBools[24] == false)
+        {
+            TriggerDialogue(24);
+            LockerBools[24] = true;
+        }
+
 
 
 

@@ -118,7 +118,7 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         //Event
         Triggers.Add("Quest23", false);//Arena open
         Triggers.Add("Quest24", false);//Aye founded
-        Triggers.Add("Quest25", false);//
+        Triggers.Add("Quest25", false);//Entry Arena 
 
 
 
