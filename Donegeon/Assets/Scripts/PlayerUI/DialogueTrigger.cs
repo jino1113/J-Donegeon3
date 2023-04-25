@@ -13,6 +13,7 @@ public class DialogueTrigger : MonoBehaviour
 
     [SerializeField] private GameObject DialogueBox;
     [SerializeField] private Text DialogueText;
+    [SerializeField] private AudioClip[] audioClips;
     [SerializeField] private float Time;
 
     public Dictionary<int, bool> LockerBools = new Dictionary<int, bool>();
@@ -203,8 +204,18 @@ public class DialogueTrigger : MonoBehaviour
 
     }
 
+    void TriggerNarrator(int number)
+    {
+        if (audioClips[number] != null)
+        {
+            GameControllerManager.Instance.AudioSource.PlayOneShot(audioClips[number]);
+        }
+    }
+
+
     void TriggerDialogue(int number)
     {
+        TriggerNarrator(number);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue.DialogueInfo[number].Sentence, DialogueText, dialogue.DialogueInfo[number].Sprite[0], DialogueBox);
     }
 

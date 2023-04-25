@@ -109,7 +109,7 @@ public class ToolSwitch : MonoBehaviour
         if (CurrentObject)
         {
             Vector3 DirectionToPoint = PickupTarget.position - CurrentObject.position;
-            float DistanceToPoint = DirectionToPoint.magnitude;
+            float DistanceToPoint = DirectionToPoint.magnitude * 0.5f;
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
         }

@@ -23,7 +23,7 @@ public class GameControllerManager : MonoBehaviour
     [SerializeField] private GameObject DeadPanelGameObject;
     [SerializeField] private GameObject SceneName;
 
-    [SerializeField] private AudioSource AudioSource;
+    public AudioSource AudioSource;
     [SerializeField] private AudioClip AudioClips;
 
     public bool Pause,Ending,isDead;
