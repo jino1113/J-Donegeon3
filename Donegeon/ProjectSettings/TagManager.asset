@@ -25,6 +25,7 @@ TagManager:
   - Glove
   - MusicBox
   - Disc
+  - GoatHelmet
   layers:
   - Default
   - TransparentFX
@@ -46,7 +47,7 @@ TagManager:
   - Painting
   - Mimic
   - Chest
-  - 
+  - TV
   - 
   - 
   - 

@@ -107,6 +107,15 @@ public class PopUpWhenLook : MonoBehaviour
                 PointArrow.Instance.Triggers["Quest8"] = true;
             }
         }
+        //Look TV
+        if (Physics.Raycast(CameraRay, out RaycastHit hitTV, Range, Mask[4]))
+        {
+            timer[3] += Time.deltaTime;
+            if (timer[3] >= 10)
+            {
+                PointArrow.Instance.Triggers["Quest34"] = true;
+            }
+        }
         else
         {
             timer[2] = 0;

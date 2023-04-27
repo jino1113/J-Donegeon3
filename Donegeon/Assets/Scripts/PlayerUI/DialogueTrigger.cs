@@ -204,8 +204,78 @@ public class DialogueTrigger : MonoBehaviour
             TriggerDialogue(24);
             LockerBools[24] = true;
         }
-
-
+        //Office entry
+        if (PointArrow.Instance.Triggers["Quest26"] == true && LockerBools[25] == false)
+        {
+            TriggerDialogue(25);
+            LockerBools[25] = true;
+        }
+        //First see BonFire Lit
+        if (PointArrow.Instance.Triggers["Quest27"] == true && LockerBools[26] == false)
+        {
+            TriggerDialogue(26);
+            LockerBools[26] = true;
+        }
+        //First pick Skyrim Helmet
+        if (PointArrow.Instance.Triggers["Quest28"] == true && LockerBools[27] == false)
+        {
+            TriggerDialogue(27);
+            LockerBools[27] = true;
+        }
+        //Switch on torch in Treasure room
+        if (PointArrow.Instance.Triggers["Quest29"] == true && LockerBools[28] == false)
+        {
+            TriggerDialogue(28);
+            LockerBools[28] = true;
+        }
+        //-
+        if (PointArrow.Instance.Triggers["Quest30"] == true && LockerBools[29] == false)
+        {
+            TriggerDialogue(29);
+            LockerBools[29] = true;
+        }
+        //First pick Crown
+        if (PointArrow.Instance.Triggers["Quest31"] == true && LockerBools[30] == false)
+        {
+            TriggerDialogue(30);
+            LockerBools[30] = true;
+        }
+        //Bring the Crown to Treasure room
+        if (PointArrow.Instance.Triggers["Quest32"] == true && LockerBools[31] == false)
+        {
+            TriggerDialogue(31);
+            LockerBools[31] = true;
+        }
+        //Bring CD to gramophone first time
+        if (PointArrow.Instance.Triggers["Quest33"] == true && LockerBools[32] == false)
+        {
+            TriggerDialogue(32);
+            LockerBools[32] = true;
+        }
+        //Enter another office room
+        if (PointArrow.Instance.Triggers["Quest34"] == true && LockerBools[33] == false)
+        {
+            TriggerDialogue(33);
+            LockerBools[33] = true;
+        }
+        //Look at TV for 10s
+        if (PointArrow.Instance.Triggers["Quest35"] == true && LockerBools[34] == false)
+        {
+            TriggerDialogue(34);
+            LockerBools[34] = true;
+        }
+        //Collect the golden hammer
+        if (PointArrow.Instance.Triggers["Quest36"] == true && LockerBools[35] == false)
+        {
+            TriggerDialogue(35);
+            LockerBools[35] = true;
+        }
+        //Collect the golden hands
+        if (PointArrow.Instance.Triggers["Quest37"] == true && LockerBools[36] == false)
+        {
+            TriggerDialogue(36);
+            LockerBools[36] = true;
+        }
 
 
     }
@@ -214,6 +284,10 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (audioClips[number] != null)
         {
+            if (GameControllerManager.Instance.AudioSource.isPlaying)
+            {
+                GameControllerManager.Instance.AudioSource.Stop();
+            }
             GameControllerManager.Instance.AudioSource.PlayOneShot(audioClips[number]);
         }
     }

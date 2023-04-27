@@ -120,9 +120,18 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         Triggers.Add("Quest24", false);//Aye founded
         Triggers.Add("Quest25", false);//Entry Arena 
 
-
-
-
+        Triggers.Add("Quest26", false);//Office entry
+        Triggers.Add("Quest27", false);//First see BonFire Lit
+        Triggers.Add("Quest28", false);//First pick Skyrim Helmet
+        Triggers.Add("Quest29", false);//Switch on torch in Treasure room
+        Triggers.Add("Quest30", false);//-
+        Triggers.Add("Quest31", false);//First pick Crown
+        Triggers.Add("Quest32", false);//Bring the Crown to Treasure room
+        Triggers.Add("Quest33", false);//Bring CD to gramophone first time
+        Triggers.Add("Quest34", false);//Enter another office room
+        Triggers.Add("Quest35", false);//Look at TV for 10s
+        Triggers.Add("Quest36", false);//Collect the golden hammer
+        Triggers.Add("Quest37", false);//Collect the golden hands
         NowScore = 6f;
         StartCoroutine(waitStart());
     }

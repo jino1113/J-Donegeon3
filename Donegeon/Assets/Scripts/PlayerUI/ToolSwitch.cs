@@ -237,6 +237,14 @@ public class ToolSwitch : MonoBehaviour
                 {
                     PointArrow.Instance.Triggers["Quest21"] = true;
                 }
+                if (HitInfo.transform.tag == "Crown")
+                {
+                    PointArrow.Instance.Triggers["Quest30"] = true;
+                }
+                if (HitInfo.transform.tag == "GoatHelmet")
+                {
+                    PointArrow.Instance.Triggers["Quest27"] = true;
+                }
                 if (HitInfo.transform.gameObject.tag == "StoryPaper")
                 {
                     HitInfo.transform.gameObject.GetComponent<holdingPaper>().isHolding = true;
@@ -266,6 +274,7 @@ public class ToolSwitch : MonoBehaviour
                 {
                     Debug.Log("Change Glove");
                     Destroy(HitGoldenItem.transform.gameObject);
+                    PointArrow.Instance.Triggers["Quest36"] = true;
                     HandGameObjects[0].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
                     HandGameObjects[1].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
                     HandGameObjects[2].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[0];
@@ -275,6 +284,7 @@ public class ToolSwitch : MonoBehaviour
                 if (HitGoldenItem.transform.gameObject.tag == "Hammer")
                 {
                     Destroy(HitGoldenItem.transform.gameObject);
+                    PointArrow.Instance.Triggers["Quest35"] = true;
                     Debug.Log("Change Hammer");
                     HandGameObjects[4].GetComponent<SkinnedMeshRenderer>().material = GoldenMaterial[1];
                     GameControllerManager.Instance.SecretScore += 1;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DisablerGameobject : MonoBehaviour
 {
     [SerializeField] private List<GameObject> WantToDisableList;
+    [SerializeField] private bool Secret;
 
     [SerializeField] private Animator m_Animator;
     public bool kindle;
@@ -37,6 +38,11 @@ public class DisablerGameobject : MonoBehaviour
                 {
                     Debug.Log("Pull0");
                     m_Animator.SetBool("Pull", true);
+                }
+
+                if (Secret == true)
+                {
+                    PointArrow.Instance.Triggers["Quest28"] = true;
                 }
 
                 PointArrow.Instance.Triggers["Recheck"] = true;
@@ -97,6 +103,10 @@ public class DisablerGameobject : MonoBehaviour
                         Debug.Log("Pull3");
 
                         m_Animator.SetBool("Pull", false);
+                    }
+                    if (Secret == true)
+                    {
+                        PointArrow.Instance.Triggers["Quest28"] = true;
                     }
                     PointArrow.Instance.Triggers["Recheck"] = true;
                     StartCoroutine(WaitFalse());

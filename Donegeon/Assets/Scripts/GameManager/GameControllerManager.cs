@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameControllerManager : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class GameControllerManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> FogGateGameObjects;
 
-    [SerializeField] private GameObject DeadPanelGameObject;
+    [SerializeField] private GameObject[] DeadPanelGameObject;
+    private int PreviousDeadPanel;
     [SerializeField] private GameObject SceneName;
 
     public AudioSource AudioSource;
@@ -38,6 +40,8 @@ public class GameControllerManager : MonoBehaviour
     private int OldSecret;
     public Color ClearQuestColor;
 
+    private int x;
+
     public static GameControllerManager Instance;
 
     private void Awake()
@@ -53,6 +57,7 @@ public class GameControllerManager : MonoBehaviour
 
     void Start()
     {
+        x = 0;
         OldSecret = 0;
         SecretScore = 0;
         Ending = false;
@@ -135,14 +140,14 @@ public class GameControllerManager : MonoBehaviour
             {
                 for (int index = 0; index <= 17; index++)
                 {
-                    AnimatorController[index].SetBool("Fade",true);
+                    AnimatorController[index].SetBool("Fade", true);
                     index++;
                 }
             }
             StartCoroutine(FogGateOpen());
             StartCoroutine(WaitTimer());
             AnimatorController = null;
-           // PlayQuestSFX();
+            // PlayQuestSFX();
 
         }
 
@@ -176,17 +181,23 @@ public class GameControllerManager : MonoBehaviour
 
     void CheckDead()
     {
-        if (isDead == true)
+        int randomIndex = Random.Range(0, DeadPanelGameObject.Length);
+        if (x == 0)
         {
-            DeadPanelGameObject.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Pause = true;
-            Time.timeScale = 0f;
+            if (isDead == true)
+            {
+                ChangeDead();
+                x += 1;
+                PreviousDeadPanel = randomIndex;
+                DeadPanelGameObject[randomIndex].SetActive(true);
+            }
         }
-        else if (isDead == false)
+        if (isDead == false)
         {
-            DeadPanelGameObject.SetActive(false);
+            x = 0;
+            DeadPanelGameObject[0].SetActive(false);
+            DeadPanelGameObject[1].SetActive(false);
+            DeadPanelGameObject[2].SetActive(false);
         }
     }
 
@@ -195,8 +206,6 @@ public class GameControllerManager : MonoBehaviour
     {
         if (isDead == true)
         {
-            isDead = false;
-            Pause = false;
             Time.timeScale = 1f;
             if (DieCounter[0] + DieCounter[1] + DieCounter[2] + DieCounter[3] + DieCounter[4] + DieCounter[5] == 3)
             {
@@ -210,10 +219,6 @@ public class GameControllerManager : MonoBehaviour
             {
                 PointArrow.Instance.Triggers["Quest18"] = true;
             }
-        }
-        else if (isDead == false)
-        {
-            isDead = true;
         }
     }
 
