@@ -42,7 +42,7 @@ public class DisablerGameobject : MonoBehaviour
 
                 if (Secret == true)
                 {
-                    PointArrow.Instance.Triggers["Quest28"] = true;
+                    PointArrow.Instance.Triggers["Quest29"] = true;
                 }
 
                 PointArrow.Instance.Triggers["Recheck"] = true;
@@ -106,7 +106,7 @@ public class DisablerGameobject : MonoBehaviour
                     }
                     if (Secret == true)
                     {
-                        PointArrow.Instance.Triggers["Quest28"] = true;
+                        PointArrow.Instance.Triggers["Quest29"] = true;
                     }
                     PointArrow.Instance.Triggers["Recheck"] = true;
                     StartCoroutine(WaitFalse());

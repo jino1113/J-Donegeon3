@@ -31,7 +31,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < 39; i++)
         {
             LockerBools[i] = false;
         }

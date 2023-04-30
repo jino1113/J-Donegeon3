@@ -24,7 +24,7 @@ public class DiscBGM : MonoBehaviour
             }
             if (secret == false)
             {
-                PointArrow.Instance.Triggers["Quest32"] = true;
+                PointArrow.Instance.Triggers["Quest33"] = true;
                 GameControllerManager.Instance.SecretScore += 1;
             }
 

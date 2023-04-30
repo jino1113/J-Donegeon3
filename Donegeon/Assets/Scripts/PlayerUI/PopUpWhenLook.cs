@@ -13,6 +13,7 @@ public class PopUpWhenLook : MonoBehaviour
     [SerializeField] private Slider ProgresSlider;
 
     [SerializeField] private float ProgressPoint;
+    [SerializeField] private GameObject Crosshair;
 
     [SerializeField] private List<LayerMask> Mask;
 
@@ -32,18 +33,6 @@ public class PopUpWhenLook : MonoBehaviour
     {
         FixingProgressBar();
     }
-
-
-    void QuestOnLook()
-    {
-
-    }
-
-    void HightlightOnLook()
-    {
-
-    }
-
 
     void FixingProgressBar()
     {
@@ -113,13 +102,23 @@ public class PopUpWhenLook : MonoBehaviour
             timer[3] += Time.deltaTime;
             if (timer[3] >= 10)
             {
-                PointArrow.Instance.Triggers["Quest34"] = true;
+                PointArrow.Instance.Triggers["Quest35"] = true;
             }
         }
         else
         {
             timer[2] = 0;
         }
+        //Look Litter
+        if (Physics.Raycast(CameraRay, out RaycastHit hitlitter, Range, Mask[5]))
+        {
+            Crosshair.SetActive(true);
+        }
+        else
+        {
+            Crosshair.SetActive(false);
+        }
+
 
     }
 }

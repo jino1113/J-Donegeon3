@@ -31,7 +31,7 @@ public class WinePacker : MonoBehaviour
         {
             if (collider.gameObject.tag == "Crown")
             {
-                PointArrow.Instance.Triggers["Quest31"] = true;
+                PointArrow.Instance.Triggers["Quest32"] = true;
                 GameControllerManager.Instance.SecretScore += 1;
                 collider.GetComponent<Collider>().isTrigger = true;
                 collider.GetComponent<Rigidbody>().useGravity = false;
