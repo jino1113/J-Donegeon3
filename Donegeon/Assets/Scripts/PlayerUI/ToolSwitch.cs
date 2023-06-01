@@ -291,15 +291,15 @@ public class ToolSwitch : MonoBehaviour
                 }
 
             }
-            else if (Physics.Raycast(CameraRay, out RaycastHit HitMimic, PickupRange, MimicLayerMask))
-            {
-                HitMimic.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = false;
-                StartCoroutine(WaitChestEnumerator());
-                if (waiting == false)
-                {
-                    HitMimic.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = true;
-                }
-            }
+            //else if (Physics.Raycast(CameraRay, out RaycastHit HitMimic, PickupRange, MimicLayerMask))
+            //{
+            //    HitMimic.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = false;
+            //    StartCoroutine(WaitChestEnumerator());
+            //    if (waiting == false)
+            //    {
+            //        HitMimic.transform.gameObject.GetComponent<ChestOpen>().m_IsOpen = true;
+            //    }
+            //}
             else
             {
                 MovementAnimator.SetBool("UseTool", false);

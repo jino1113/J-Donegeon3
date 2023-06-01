@@ -716,7 +716,7 @@ AudioSource:
   m_GameObject: {fileID: 5450052049502263991}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -4368464095646346318, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -933,18 +933,25 @@ MonoBehaviour:
     m_Bits: 8192
   LeverLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
   ChestLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 524288
   MimicLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 262144
   GoldenLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  GoldenMaterial: []
-  HandGameObjects: []
+    m_Bits: 32768
+  GoldenMaterial:
+  - {fileID: 2100000, guid: daa34843727a75d49b3f1c290d6b8667, type: 2}
+  - {fileID: 2100000, guid: 0b6fe55c6c2dcad42af1964d53c9a981, type: 2}
+  HandGameObjects:
+  - {fileID: 6843668950644582362}
+  - {fileID: 6843668951023083272}
+  - {fileID: 6843668950371226359}
+  - {fileID: 6843668949904389030}
+  - {fileID: 4246432492674666438}
 --- !u!82 &1199960060
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1520,13 +1527,25 @@ MonoBehaviour:
   TextObjectName: {fileID: 0}
   ProgresSlider: {fileID: 0}
   ProgressPoint: 0
+  Crosshair: {fileID: 0}
   Mask:
   - serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   - serializedVersion: 2
-    m_Bits: 0
-  Range: 5
-  timer: []
+    m_Bits: 65536
+  - serializedVersion: 2
+    m_Bits: 8192
+  - serializedVersion: 2
+    m_Bits: 131072
+  - serializedVersion: 2
+    m_Bits: 1048576
+  - serializedVersion: 2
+    m_Bits: 1024
+  Range: 6
+  timer:
+  - 0
+  - 0
+  - 0
 --- !u!82 &75897354
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1536,7 +1555,8 @@ AudioSource:
   m_GameObject: {fileID: 5450052050785396333}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.25
@@ -1710,7 +1730,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147499951
+    m_Bits: 2149580719
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 981845cd1ce337e4296ba648f67c1de2, type: 2}
   m_TargetDisplay: 0
@@ -3011,7 +3031,8 @@ AudioSource:
   m_GameObject: {fileID: 919132149073711125}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3182,6 +3203,12 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6843668951023083272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6843668951411126860, guid: 39a58b8f8c8dca44db413603128eaec6,
+    type: 3}
+  m_PrefabInstance: {fileID: 992161092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1107665083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3454,6 +3481,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7510008184005429538, guid: 2560be75d4cc1204ca60ba9a25b44e1a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5e1064aec9bbe44a805375a35290f89, type: 2}
     - target: {fileID: 7916897282855061439, guid: 2560be75d4cc1204ca60ba9a25b44e1a,
         type: 3}
       propertyPath: m_Layer
@@ -3492,7 +3524,8 @@ AudioSource:
   m_GameObject: {fileID: 919132148114955754}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3615,6 +3648,18 @@ MonoBehaviour:
   - {fileID: 292390091}
   AudioClips:
   - {fileID: 0}
+--- !u!1 &4246432492674666438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4246432493781741437, guid: 2560be75d4cc1204ca60ba9a25b44e1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107665083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6843668950371226359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6843668951411126860, guid: 2560be75d4cc1204ca60ba9a25b44e1a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107665083}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1387304342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4410,7 +4455,8 @@ AudioSource:
   m_GameObject: {fileID: 919132148395256007}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4533,6 +4579,12 @@ MonoBehaviour:
   - {fileID: 1427152507}
   AudioClips:
   - {fileID: 0}
+--- !u!1 &6843668950644582362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6843668951411126860, guid: cdec388afa739b0449ecf287c3b367fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1387304342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1716584938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4977,6 +5029,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1716584938}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6843668949904389030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6843668951411126860, guid: f0ea7c75a57fe0843a26f43a24cb3e31,
+    type: 3}
+  m_PrefabInstance: {fileID: 1716584938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1945996135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4987,7 +5045,7 @@ PrefabInstance:
     - target: {fileID: 3560485809999965921, guid: bd94d8d80a860a44faab2a690976ad35,
         type: 3}
       propertyPath: m_Name
-      value: Fire
+      value: TouchFire
       objectReference: {fileID: 0}
     - target: {fileID: 3601451995109223266, guid: bd94d8d80a860a44faab2a690976ad35,
         type: 3}
