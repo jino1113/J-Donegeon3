@@ -7,6 +7,16 @@ using UnityEngine.InputSystem.Controls;
 
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     public Rigidbody Rb;
     public GameObject CamHolder;
     public float Sensitivity;
