@@ -48,14 +48,33 @@ public class GameScore : MonoBehaviour
         SecretPoint = GameControllerManager.Instance.SecretScore;
     }
 
-    public void SetBGMVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
-        AudioMixer.SetFloat("BGMVolume",volume);
+        AudioMixer.SetFloat("MasterVolume",volume);
     }
 
-    public void SetSFXVolume(float volume)
+    public void SetInGameVolume(float volume)
     {
-        AudioMixer.SetFloat("SFXVolume", volume);
+        AudioMixer.SetFloat("InGameVolume", volume);
+    }
+
+    public void SetInGameSFXVolume(float volume)
+    {
+        AudioMixer.SetFloat("InGameSFXVolume", volume);
+    }
+
+    public void SetNarratorVolume(float volume)
+    {
+        AudioMixer.SetFloat("NarratorVolume", volume);
+    }
+    public void SetBGMVolume(float volume)
+    {
+        AudioMixer.SetFloat("BGMVolume", volume);
+    }
+
+    public void SetMenuSFXVolume(float volume)
+    {
+        AudioMixer.SetFloat("MenuSFXVolume", volume);
     }
 }
 

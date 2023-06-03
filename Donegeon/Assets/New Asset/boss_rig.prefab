@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2555151398161110819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hip.L
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 7857266310278963750}
   - component: {fileID: 1126343190076976780}
   - component: {fileID: 3477354202644541312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leg.L
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ AudioSource:
   m_GameObject: {fileID: 325045653234859637}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -274,9 +274,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2440460429549786754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hip.R.001
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 964299861586259619}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pec.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,9 +480,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5575403792202244259}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: back
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,9 +519,9 @@ GameObject:
   - component: {fileID: 1882448893429278159}
   - component: {fileID: 8982191016643752739}
   - component: {fileID: 3278590577171196368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shoulder.R
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ AudioSource:
   m_GameObject: {fileID: 1882448893429278157}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -752,9 +752,9 @@ GameObject:
   - component: {fileID: 8017479294638656529}
   - component: {fileID: 6418866741317681386}
   - component: {fileID: 403916529404952301}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leg.R
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -883,7 +883,7 @@ AudioSource:
   m_GameObject: {fileID: 2255569680050815166}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -985,9 +985,9 @@ GameObject:
   - component: {fileID: 2275075752416633684}
   - component: {fileID: 8268831835170563158}
   - component: {fileID: 3127989738585575264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: knee.R
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1116,7 +1116,7 @@ AudioSource:
   m_GameObject: {fileID: 2275075752416633682}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1213,7 +1213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401129896555257773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hip.R.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2590632031799609448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hand.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1275,7 +1275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8124377140295062977}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1306,7 +1306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 428989885019994550}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,9 +1342,9 @@ GameObject:
   - component: {fileID: 7521865691754495292}
   - component: {fileID: 863612723592907001}
   - component: {fileID: 347046664907849521}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hip.R.002
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1472,7 +1472,7 @@ AudioSource:
   m_GameObject: {fileID: 3456310773895519503}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1574,9 +1574,9 @@ GameObject:
   - component: {fileID: 5307670905800088139}
   - component: {fileID: 3755978393410893960}
   - component: {fileID: 6969102577141541774}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hip.R.003
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1704,7 +1704,7 @@ AudioSource:
   m_GameObject: {fileID: 3808272692204221144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1806,9 +1806,9 @@ GameObject:
   - component: {fileID: 4200238366134512818}
   - component: {fileID: 8639851439622828694}
   - component: {fileID: 697756488098753936}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arm.L
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1937,7 +1937,7 @@ AudioSource:
   m_GameObject: {fileID: 3966030411586460991}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -2039,9 +2039,9 @@ GameObject:
   - component: {fileID: 6382905553683911231}
   - component: {fileID: 8958545111143801376}
   - component: {fileID: 4377214508878355531}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.R
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2170,7 +2170,7 @@ AudioSource:
   m_GameObject: {fileID: 5887917091201643500}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -2272,9 +2272,9 @@ GameObject:
   - component: {fileID: 6501663657739886165}
   - component: {fileID: 7385218198918166239}
   - component: {fileID: 890303792351832145}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: knee.L
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2380,7 +2380,7 @@ AudioSource:
   m_GameObject: {fileID: 6501663657739886163}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -2500,9 +2500,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4354734975459131141}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hip.R
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2537,9 +2537,9 @@ GameObject:
   - component: {fileID: 6800546335108237248}
   - component: {fileID: 396728001892944184}
   - component: {fileID: 8486980613744202610}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shoulder.L
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2668,7 +2668,7 @@ AudioSource:
   m_GameObject: {fileID: 6800546335108237262}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -2765,7 +2765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4278169590080242869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hand.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2797,7 +2797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 742955715620597602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hand.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2834,9 +2834,9 @@ GameObject:
   - component: {fileID: 7813026554528421964}
   - component: {fileID: 2631230316532465081}
   - component: {fileID: 7990040831015891068}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2941,7 +2941,7 @@ AudioSource:
   m_GameObject: {fileID: 7182249059338421853}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -3061,7 +3061,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1433901994057787139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hand.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3097,9 +3097,9 @@ GameObject:
   - component: {fileID: 5705571166502771316}
   - component: {fileID: 1828676176707642159}
   - component: {fileID: 1435318033460090977}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: arm.R
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3228,7 +3228,7 @@ AudioSource:
   m_GameObject: {fileID: 7685596331663066216}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -3330,9 +3330,9 @@ GameObject:
   - component: {fileID: 7844356759368677755}
   - component: {fileID: 3885773771796791575}
   - component: {fileID: 4738232944515795093}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.L
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3438,7 +3438,7 @@ AudioSource:
   m_GameObject: {fileID: 7844356759368677754}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -3558,7 +3558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7817782383271962428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: foot.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3594,9 +3594,9 @@ GameObject:
   - component: {fileID: 8338002249924032564}
   - component: {fileID: 4410816929804791806}
   - component: {fileID: 3503150287139936911}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chest
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3724,7 +3724,7 @@ AudioSource:
   m_GameObject: {fileID: 8338002249924032562}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -3825,9 +3825,9 @@ GameObject:
   - component: {fileID: 4791417480321074723}
   - component: {fileID: 8824535182625142784}
   - component: {fileID: 3826201757719761502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: root
-  m_TagString: Untagged
+  m_TagString: Litter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3912,7 +3912,7 @@ AudioSource:
   m_GameObject: {fileID: 8765438248303350344}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1063902265406156208, guid: 672779ea95c48bf4ea118fceef35a19e,
+  OutputAudioMixerGroup: {fileID: -6167235972573869439, guid: 672779ea95c48bf4ea118fceef35a19e,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -4009,7 +4009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4002535289754604964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pec.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

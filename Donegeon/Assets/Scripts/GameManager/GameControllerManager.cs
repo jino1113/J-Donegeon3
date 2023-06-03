@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class GameControllerManager : MonoBehaviour
 {
+    [SerializeField] private GameObject ESCPanel;
     [SerializeField] double NowTime;
 
     [SerializeField] private Text OverallProgress;
@@ -89,6 +90,18 @@ public class GameControllerManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0f;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause = !Pause;
+            ESCPanel.SetActive(Pause);
         }
 
         OverallProgress.text = "Progress: " + CleanPercentScore + "%";

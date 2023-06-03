@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!243 &-6167235972573869439
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: In game
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fe26d8fc455bd024ea84ddd2917d8067
+  m_Children: []
+  m_Volume: 4f5c1f39562a63c44ac3bd5a2bfa93c0
+  m_Pitch: 4ae6ec62c6a11814e816f09b8015c07a
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2140413117914484801}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-4805723413235306296
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -47,6 +66,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-2140413117914484801
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c78c8410fbc39bd439d93043c8fe7536
+  m_EffectName: Attenuation
+  m_MixLevel: a97408d16e3ed3643be15231b33f2a02
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1063902265406156208
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -84,8 +117,16 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 66dd5ce40b72edc48a6794cedc6030f1
     name: BGMVolume
+  - guid: 4f5c1f39562a63c44ac3bd5a2bfa93c0
+    name: InGameVolume
+  - guid: 8720b5c51a9bcbd4a889ea1c04a7682d
+    name: MasterVolume
+  - guid: 965d550a818a3af4c9f5ff4cdd988fac
+    name: MenuSFXVolume
   - guid: 96602c511233ce34d8f86910f335a498
-    name: SFXVolume
+    name: InGameSFXVolume
+  - guid: 554ab30e65ef185478a2bf32c8fca31e
+    name: NarratorVolume
   m_AudioMixerGroupViews:
   - guids:
     - 126bc5dc537b8b94fbde7d0dcad35cbf
@@ -93,6 +134,7 @@ AudioMixerController:
     - 0f18a18d32f7201498acfd78c986ca49
     - 29816fb679705c844942b6745766d042
     - 54887013b636a204ebeda7fcba6dc450
+    - fe26d8fc455bd024ea84ddd2917d8067
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -106,9 +148,10 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 126bc5dc537b8b94fbde7d0dcad35cbf
   m_Children:
+  - {fileID: -6167235972573869439}
   - {fileID: -1063902265406156208}
-  - {fileID: -4368464095646346318}
   - {fileID: 5391024611100952369}
+  - {fileID: -4368464095646346318}
   - {fileID: 7981366424219521093}
   m_Volume: 8720b5c51a9bcbd4a889ea1c04a7682d
   m_Pitch: 55dcc704ffa588b4ba5b1ac9d67aecaa
@@ -211,7 +254,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Menu voice
+  m_Name: Menu
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 54887013b636a204ebeda7fcba6dc450
   m_Children: []
