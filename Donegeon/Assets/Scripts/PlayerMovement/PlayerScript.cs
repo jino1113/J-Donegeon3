@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     public float JumpForce;
 
 
-    private Vector2 m_Move, m_Look;
+    public Vector2 m_Move, m_Look;
     private OnButtonInput m_Run;
     private float m_LookRotation;
 
