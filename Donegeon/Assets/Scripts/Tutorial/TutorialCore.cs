@@ -17,8 +17,8 @@ public class TutorialCore : MonoBehaviour
 
     public GameObject player;
     public GameObject compass;
-    bool pressPhase = false;
-    int tutorialPhase = 0;
+    public bool pressPhase = false;
+    public int tutorialPhase = 0;
 
     public List<GameObject> pressBut = new List<GameObject>();
     public List<Vector3> arrowPost = new List<Vector3>();
@@ -36,11 +36,6 @@ public class TutorialCore : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*float distance = Vector3.Distance(player.transform.position, arrowTutorial.transform.position);
-        if (distance <= 4.5f)
-        {
-            MoveArrow(tutorialPhase, messagedialog[tutorialPhase]);
-        }*/
         ToolChangePhase();
     }
 
@@ -93,6 +88,7 @@ public class TutorialCore : MonoBehaviour
             else if (Input.GetKey(KeyCode.Alpha1))
             {
                 pressPhase = true;
+                MoveArrow(tutorialPhase, messagedialog[tutorialPhase]);
                 /*arrowTutorial.SetActive(true);
                 Animator animator = pressBut[0].GetComponent<Animator>();                
                 Text _text = pressBut[0].GetComponent<Text>();
@@ -100,7 +96,7 @@ public class TutorialCore : MonoBehaviour
                 animator.SetBool("SetPlay", true);
                 animator.Play("Press1");*/
 
-                for (int i = 1; i < 5; i++)
+                for (int i = 1; i < 4; i++)
                 {
                     Text atext = pressBut[i].GetComponent<Text>();
                     atext.color = Color.yellow;
@@ -110,11 +106,11 @@ public class TutorialCore : MonoBehaviour
         }
         else
         {
-            MoveArrow(tutorialPhase, messagedialog[tutorialPhase]);
+            return;
         }
     }
 
-    void MoveArrow(int i , string message)
+    public void MoveArrow(int i , string message)
     {
         arrowTutorial.transform.position = arrowPost[i];
         arrowTutorial.SetActive(true);
@@ -125,7 +121,7 @@ public class TutorialCore : MonoBehaviour
         animator.SetBool("SetPlay", true);
         animator.Play("Press1");
 
-        tutorialPhase++;
+        tutorialPhase+=1;
     }
 
 
