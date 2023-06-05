@@ -28,7 +28,7 @@ public class TutorialCore : MonoBehaviour
 
     private void Start()
     {
-        compass.SetActive(false);
+        //compass.SetActive(false);
         Animator animator = pressBut[1].GetComponent<Animator>();
         animator.SetBool("SetPlay", true);
         animator.Play("Press1");
@@ -121,7 +121,14 @@ public class TutorialCore : MonoBehaviour
         animator.SetBool("SetPlay", true);
         animator.Play("Press1");
 
-        tutorialPhase+=1;
+        tutorialPhase += 1;
+
+        if (tutorialPhase == 6)
+        {
+            Destroy(arrowTutorial);
+            Destroy(this);
+        }
+
     }
 
 

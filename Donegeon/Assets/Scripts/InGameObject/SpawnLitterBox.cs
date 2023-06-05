@@ -21,7 +21,6 @@ public class SpawnLitterBox : MonoBehaviour
     {
         if (SpawnBox == true)
         {
-            PointArrow.Instance.Triggers["Quest4"] = true;
             BellAnimator.SetBool("Ringing",true);
             Instantiate(LitterBoxPrefabs, BoxSpawnPoint.transform.position, Quaternion.identity);
         }

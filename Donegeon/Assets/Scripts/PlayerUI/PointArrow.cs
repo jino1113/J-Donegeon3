@@ -178,15 +178,15 @@ public class PointArrow : MonoBehaviour, ISerializationCallbackReceiver
         {
             transform.LookAt(GetClosestLitter(CurrentBloodGameObject));
         }
-        else if (Triggers["Quest4"] == false && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
-        {
-            transform.LookAt(CurrentBellGameObject);
-        }
-        else if (Triggers["Quest5"] == false && Triggers["Quest4"] == true && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
+        //else if (Triggers["Quest4"] == false && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
+        //{
+        //    transform.LookAt(CurrentBellGameObject);
+        //}
+        else if (Triggers["Quest5"] == false /*&& Triggers["Quest4"] == true */&& Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
         {
             transform.LookAt(GetClosestLitter(CurrentCandleHolderGameObject));
         }
-        else if (Triggers["Quest5"] == true && Triggers["Quest4"] == true && Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
+        else if (Triggers["Quest5"] == true /*&& Triggers["Quest4"] == true */&& Triggers["Quest3"] == true && Triggers["Quest2"] == true && Triggers["Quest1"] == true)
         {
             CompassGameObject.SetActive(false);
         }

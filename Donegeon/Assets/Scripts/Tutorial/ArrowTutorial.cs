@@ -20,6 +20,7 @@ public class ArrowTutorial : MonoBehaviour
 
     void FixedUpdate()
     {
+        this.gameObject.transform.LookAt(TutorialCore.Instance.player.transform);
         float newY = originalY + Mathf.Sin(Time.time * speed) * height;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
