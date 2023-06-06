@@ -47,7 +47,7 @@ public class DialogueTrigger : MonoBehaviour
         if (PointArrow.Instance.Triggers["Quest1"] == true && LockerBools[1] == false
             || PointArrow.Instance.Triggers["Quest2"] == true && LockerBools[1] == false
             || PointArrow.Instance.Triggers["Quest3"] == true && LockerBools[1] == false
-            || PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[1] == false
+            //|| PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[1] == false
             || PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[1] == false)
         {
             TriggerDialogue(1);
@@ -55,27 +55,27 @@ public class DialogueTrigger : MonoBehaviour
         }
         if (PointArrow.Instance.Triggers["Quest1"] != true && PointArrow.Instance.Triggers["Quest2"] == true && LockerBools[2] == false
             || PointArrow.Instance.Triggers["Quest1"] != true && PointArrow.Instance.Triggers["Quest3"] == true && LockerBools[2] == false
-            || PointArrow.Instance.Triggers["Quest1"] != true && PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[2] == false
+            //|| PointArrow.Instance.Triggers["Quest1"] != true && PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[2] == false
             || PointArrow.Instance.Triggers["Quest1"] != true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[2] == false
             || PointArrow.Instance.Triggers["Quest2"] != true && PointArrow.Instance.Triggers["Quest3"] == true && LockerBools[2] == false
-            || PointArrow.Instance.Triggers["Quest2"] != true && PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[2] == false
+            //|| PointArrow.Instance.Triggers["Quest2"] != true && PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[2] == false
             || PointArrow.Instance.Triggers["Quest2"] != true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[2] == false
-            || PointArrow.Instance.Triggers["Quest3"] != true && PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[2] == false
+            //|| PointArrow.Instance.Triggers["Quest3"] != true && PointArrow.Instance.Triggers["Quest4"] == true && LockerBools[2] == false
             || PointArrow.Instance.Triggers["Quest3"] != true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[2] == false
-            || PointArrow.Instance.Triggers["Quest4"] != true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[2] == false)
+            /*|| PointArrow.Instance.Triggers["Quest4"] != true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[2] == false*/)
         {
             TriggerDialogue(2);
             LockerBools[2] = true;
         }
-        if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest4"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest5"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest5"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest4"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest4"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest5"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] && LockerBools[3] == false
-            || PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] && LockerBools[3] == false)
+        if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true && LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true /*&& PointArrow.Instance.Triggers["Quest4"] */&& LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest3"] == true /*&& PointArrow.Instance.Triggers["Quest4"] */&& LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true /*&& PointArrow.Instance.Triggers["Quest4"] */&& LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest2"] == true /*&& PointArrow.Instance.Triggers["Quest4"] == true*/ && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[3] == false
+            || PointArrow.Instance.Triggers["Quest3"] == true /*&& PointArrow.Instance.Triggers["Quest4"] == true*/ && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[3] == false)
         {
             TriggerDialogue(3);
             LockerBools[3] = true;
@@ -83,7 +83,7 @@ public class DialogueTrigger : MonoBehaviour
         if (PointArrow.Instance.Triggers["Quest1"] == true 
             && PointArrow.Instance.Triggers["Quest2"] == true 
             && PointArrow.Instance.Triggers["Quest3"] == true 
-            && PointArrow.Instance.Triggers["Quest4"] == true
+            //&& PointArrow.Instance.Triggers["Quest4"] == true
             && PointArrow.Instance.Triggers["Quest5"] == true && LockerBools[4] == false)
         {
             TriggerDialogue(4);

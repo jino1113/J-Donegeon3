@@ -127,17 +127,17 @@ public class GameControllerManager : MonoBehaviour
         {
             QuestNameTextList[2].color = ClearQuestColor;
         }
-        if (PointArrow.Instance.Triggers["Quest4"] == true)
-        {
-            QuestNameTextList[3].color = ClearQuestColor;
-        }
+        //if (PointArrow.Instance.Triggers["Quest4"] == true)
+        //{
+        //    QuestNameTextList[3].color = ClearQuestColor;
+        //}
         if (PointArrow.Instance.Triggers["Quest5"] == true)
         {
             QuestNameTextList[4].color = ClearQuestColor;
         }
 
         if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true
-            && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] == true)
+            /*&& PointArrow.Instance.Triggers["Quest4"] == true*/ && PointArrow.Instance.Triggers["Quest5"] == true)
         {
             for (int i = 0; i < QuestNameTextList.Count ; i++)
             {
@@ -147,7 +147,7 @@ public class GameControllerManager : MonoBehaviour
 
 
         if (PointArrow.Instance.Triggers["Quest1"] == true && PointArrow.Instance.Triggers["Quest2"] == true && PointArrow.Instance.Triggers["Quest3"] == true
-            && PointArrow.Instance.Triggers["Quest4"] == true && PointArrow.Instance.Triggers["Quest5"] == true && PointArrow.Instance.NowScore >= GateOpenScore || Input.GetKeyDown(KeyCode.P))
+            /*&& PointArrow.Instance.Triggers["Quest4"] == true*/ && PointArrow.Instance.Triggers["Quest5"] == true && PointArrow.Instance.NowScore >= GateOpenScore || Input.GetKeyDown(KeyCode.P))
         {
             if (AnimatorController != null)
             {
