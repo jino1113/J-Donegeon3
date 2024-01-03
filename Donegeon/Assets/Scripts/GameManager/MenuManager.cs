@@ -58,11 +58,6 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    void LateUpdate()
-    {
-
-    }
-
     public void quitGame()
     {
         Application.Quit();
