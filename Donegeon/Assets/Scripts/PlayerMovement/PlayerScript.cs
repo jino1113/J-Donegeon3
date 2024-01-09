@@ -34,6 +34,9 @@ public class PlayerScript : MonoBehaviour
     private OnButtonInput m_Run;
     private float m_LookRotation;
 
+    //----------------------------//
+    private PlayerInput playerInput;
+    private CharacterController controller;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -52,6 +55,7 @@ public class PlayerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         OriginalSpeed = Speed;
 
+        playerInput = GetComponent<PlayerInput>();  
     }
 
     private void FixedUpdate()
@@ -72,6 +76,14 @@ public class PlayerScript : MonoBehaviour
             m_LookRotation += (-m_Look.y * Sensitivity);
             m_LookRotation = Mathf.Clamp(m_LookRotation, -90, 90);
         }
+
+        // New player input
+        Vector2 input = playerInput.actions["Walk"].ReadValue<Vector2>();
+        Vector3 walk = new Vector3(input.x, 0, input.y);
+        walk = walk.x * transform.right + walk.z * transform.forward;
+        walk.y = 0f;
+        controller.Move(walk * Time.deltaTime * Speed);
+
     }
 
     private void LateUpdate()

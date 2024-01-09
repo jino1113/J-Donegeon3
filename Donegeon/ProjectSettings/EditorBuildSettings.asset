@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheChateau.unity
     guid: dc9d17881d53f9546b711323bc2bc59a
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 1d67a36a8726f10409b354e69e484354,
+      type: 2}
