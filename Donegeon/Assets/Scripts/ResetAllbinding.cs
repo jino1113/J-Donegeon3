@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class ResetAllbinding : MonoBehaviour
 {
     [SerializeField]
-    private InputActionAsset inputActions;
+    private List<InputActionAsset> inputActions;
 
     public void ResetAllBindings()
     {
         // Reset KeyBind
-        foreach (InputActionMap map in inputActions.actionMaps) 
+        foreach (InputActionMap map in inputActions[0].actionMaps) 
         {
             map.RemoveAllBindingOverrides();
 

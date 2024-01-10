@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
     private OnButtonInput m_Run;
     private float m_LookRotation;
 
-    //----------------------------//
+    //---- New input ----//
     private PlayerInput playerInput;
     private CharacterController controller;
 
@@ -77,13 +77,38 @@ public class PlayerScript : MonoBehaviour
             m_LookRotation = Mathf.Clamp(m_LookRotation, -90, 90);
         }
 
-        // New player input
-        Vector2 input = playerInput.actions["Walk"].ReadValue<Vector2>();
-        Vector3 walk = new Vector3(input.x, 0, input.y);
-        walk = walk.x * transform.right + walk.z * transform.forward;
-        walk.y = 0f;
-        controller.Move(walk * Time.deltaTime * Speed);
+        // New player input (Walk: W A S D)
+        if(playerInput.actions["Movement"].triggered)
+        {
+            Move();
+            Debug.Log("New player input (Walk: W A S D)");
+        }
 
+        //Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
+        //Vector3 walk = new Vector3(inputWalk.x, 0, inputWalk.y);
+        //walk = walk.x * transform.right + walk.z * transform.forward;
+        //walk.y = 0f;
+        //controller.Move(walk * Time.deltaTime * Speed);
+
+        // New player input (Run)
+        if (playerInput.actions["Run"].triggered)
+        {
+            Speed = RunSpeed;
+            Debug.Log("New player input (Run true)");
+        }
+        if (!playerInput.actions["Run"].triggered)
+        {
+            Speed = OriginalSpeed;
+            Debug.Log("New player input (Run false)");     
+        }
+
+        // New player input (Jump)    
+        if (playerInput.actions["Sheet"].triggered && Animator.GetBool("grounded")) 
+        {
+            m_TestJump();
+            Debug.Log("New player input (Jump)");
+        }
+       
     }
 
     private void LateUpdate()
