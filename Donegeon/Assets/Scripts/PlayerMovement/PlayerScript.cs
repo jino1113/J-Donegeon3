@@ -76,20 +76,20 @@ public class PlayerScript : MonoBehaviour
             m_LookRotation += (-m_Look.y * Sensitivity);
             m_LookRotation = Mathf.Clamp(m_LookRotation, -90, 90);
         }
-
+        
         // New player input (Walk: W A S D)
         if(playerInput.actions["Movement"].triggered)
         {
             Move();
             Debug.Log("New player input (Walk: W A S D)");
         }
-
+        
         //Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
         //Vector3 walk = new Vector3(inputWalk.x, 0, inputWalk.y);
         //walk = walk.x * transform.right + walk.z * transform.forward;
         //walk.y = 0f;
         //controller.Move(walk * Time.deltaTime * Speed);
-
+        
         // New player input (Run)
         if (playerInput.actions["Run"].triggered)
         {
@@ -119,11 +119,13 @@ public class PlayerScript : MonoBehaviour
 
     void Run()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        //if (Input.GetKey(KeyCode.LeftShift))
+
+        if (playerInput.actions["Run"].triggered == true)
         {
             Speed = RunSpeed;
         }
-        else
+        if (!playerInput.actions["Run"].triggered == false)
         {
             Speed = OriginalSpeed;
         }
@@ -131,22 +133,37 @@ public class PlayerScript : MonoBehaviour
 
     void Move()
     {
-        //Find target velocity
+        // New player input (Run)
+        Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
         Vector3 currentVelocity = Rb.velocity;
-        Vector3 targetVelocity = new Vector3(m_Move.x, 0, m_Move.y);
-        targetVelocity *= Speed;
+        Vector3 walk = new Vector3(m_Move.x, 0, m_Move.y);
+        walk *= Speed;
+
+        walk = transform.TransformDirection(walk);
+        Vector3 velocityChange = (walk - currentVelocity);
+        velocityChange = new Vector3(velocityChange.x, -0.65f, velocityChange.z);
+
+        //Find target velocity
+        //Vector3 currentVelocity = Rb.velocity;
+        //Vector3 targetVelocity = new Vector3(m_Move.x, 0, m_Move.y);
+        //targetVelocity *= Speed;
 
         //Align direction
-        targetVelocity = transform.TransformDirection(targetVelocity);
+        //targetVelocity = transform.TransformDirection(targetVelocity);
 
-        //Calculate forces
-        Vector3 velocityChange = (targetVelocity - currentVelocity);
-        velocityChange = new Vector3(velocityChange.x, -0.65f, velocityChange.z);
+        //Calculate forces 
+        //Vector3 velocityChange = (targetVelocity - currentVelocity);
 
         //Limit force
         Vector3.ClampMagnitude(velocityChange, MaxForce);
 
         Rb.AddForce(velocityChange, ForceMode.VelocityChange);
+
+        //Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
+        //Vector3 walk = new Vector3(inputWalk.x, 0, inputWalk.y);
+        //walk = walk.x * transform.right + walk.z * transform.forward;
+        //walk.y = 0f;
+        //controller.Move(walk * Time.deltaTime * Speed);
     }
 
     void Jump()
@@ -165,12 +182,14 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 junpForcesVector3 = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Animator.GetBool("grounded") == true)
+        // New player input
+       
+        if (playerInput.actions["Sheet"].triggered && Animator.GetBool("grounded") == true)
         {
             junpForcesVector3 = Vector3.up * JumpForce;
         }
         Rb.AddForce(junpForcesVector3, ForceMode.VelocityChange);
-
+        
     }
 
 }
