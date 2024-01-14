@@ -89,7 +89,8 @@ public class PlayerScript : MonoBehaviour
         //walk = walk.x * transform.right + walk.z * transform.forward;
         //walk.y = 0f;
         //controller.Move(walk * Time.deltaTime * Speed);
-        
+
+        /*
         // New player input (Run)
         if (playerInput.actions["Run"].triggered)
         {
@@ -101,6 +102,7 @@ public class PlayerScript : MonoBehaviour
             Speed = OriginalSpeed;
             Debug.Log("New player input (Run false)");     
         }
+        */
 
         // New player input (Jump)    
         if (playerInput.actions["Sheet"].triggered && Animator.GetBool("grounded")) 
@@ -124,10 +126,12 @@ public class PlayerScript : MonoBehaviour
         if (playerInput.actions["Run"].triggered == true)
         {
             Speed = RunSpeed;
+            Debug.Log("New player input (Run true)");
         }
         if (!playerInput.actions["Run"].triggered == false)
         {
             Speed = OriginalSpeed;
+            Debug.Log("New player input (Run false)");
         }
     }
 
