@@ -127,11 +127,13 @@ public class PlayerScript : MonoBehaviour
         {
             Speed = RunSpeed;
             Debug.Log("New player input (Run true)");
+            Debug.Log("True Speed = " + Speed);
         }
         if (!playerInput.actions["Run"].triggered == false)
         {
             Speed = OriginalSpeed;
             Debug.Log("New player input (Run false)");
+            Debug.Log("False Speed = " + Speed);
         }
     }
 
@@ -186,8 +188,7 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 junpForcesVector3 = Vector3.zero;
 
-        // New player input
-       
+        // New player input   
         if (playerInput.actions["Sheet"].triggered && Animator.GetBool("grounded") == true)
         {
             junpForcesVector3 = Vector3.up * JumpForce;
