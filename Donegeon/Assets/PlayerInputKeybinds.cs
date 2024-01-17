@@ -172,6 +172,11 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""controller"",
+            ""bindingGroup"": ""controller"",
+            ""devices"": []
         }
     ]
 }");
@@ -300,6 +305,15 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
         {
             if (m_KeyboardandMouseSchemeIndex == -1) m_KeyboardandMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard and Mouse");
             return asset.controlSchemes[m_KeyboardandMouseSchemeIndex];
+        }
+    }
+    private int m_controllerSchemeIndex = -1;
+    public InputControlScheme controllerScheme
+    {
+        get
+        {
+            if (m_controllerSchemeIndex == -1) m_controllerSchemeIndex = asset.FindControlSchemeIndex("controller");
+            return asset.controlSchemes[m_controllerSchemeIndex];
         }
     }
     public interface IPlayerActions

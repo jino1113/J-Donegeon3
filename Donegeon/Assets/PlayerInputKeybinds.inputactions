@@ -150,6 +150,11 @@
                     "isOR": false
                 }
             ]
+        },
+        {
+            "name": "controller",
+            "bindingGroup": "controller",
+            "devices": []
         }
     ]
 }

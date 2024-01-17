@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,26 +24,61 @@ public class PlayerScript : MonoBehaviour
     public Animator Animator;
 
     [Header("Movement")]
-    public float OriginalSpeed;
-    public float Speed;
-    public float RunSpeed;
-    public float MaxForce;
-    public float JumpForce;
-
 
     public Vector2 m_Move, m_Look;
     private OnButtonInput m_Run;
     private float m_LookRotation;
 
     //---- New input ----//
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private CharacterController controller;
+ 
+    // GPT
+    public InputActionReference movementAction;
+    public InputActionReference jumpAction;
+    public InputActionReference runAction; // New InputAction for the run button
 
-    public void OnMove(InputAction.CallbackContext context)
+    public float moveSpeed = 5f;
+    public float runMultiplier = 1.5f; // Speed multiplier when running
+    public float jumpForce = 10f;
+    private bool isJumping = false;
+    private Rigidbody playerRigidbody;
+
+    // Ground check variables
+    public LayerMask groundLayer;
+    public float groundCheckDistance = 0.2f;
+
+    private Transform playerCamera;
+    private void LateUpdate()
     {
-        m_Move = context.ReadValue<Vector2>();
+        CamHolder.transform.eulerAngles = new Vector3(m_LookRotation, CamHolder.transform.eulerAngles.y, CamHolder.transform.eulerAngles.z);
+
     }
 
+    void OnEnable()
+    {
+        // Enable input actions
+        movementAction.action.Enable();
+        jumpAction.action.Enable();
+        runAction.action.Enable(); // Enable the run action
+
+        playerRigidbody = GetComponent<Rigidbody>();
+        playerCamera = Camera.main.transform;
+    }
+
+    void OnDisable()
+    {
+        // Disable input actions
+        movementAction.action.Disable();
+        jumpAction.action.Disable();
+        runAction.action.Disable(); // Disable the run action
+    }
+
+    public bool IsGrounded()
+    {
+        // Perform a raycast to check if the player is grounded
+        return Physics.Raycast(transform.position, Vector3.down, 0.1f);
+    }
 
     public void OnLook(InputAction.CallbackContext context)
     {
@@ -53,20 +89,19 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        OriginalSpeed = Speed;
-
-        playerInput = GetComponent<PlayerInput>();  
+       
     }
 
     private void FixedUpdate()
     {
         Move();
-        Run();
-        m_TestJump();
     }
 
     void Update()
     {
+        // Check if the player is grounded
+        bool isGrounded = IsGrounded();
+
         if (GameControllerManager.Instance.Pause == false)
         {
             //Turn
@@ -75,126 +110,61 @@ public class PlayerScript : MonoBehaviour
             //Look
             m_LookRotation += (-m_Look.y * Sensitivity);
             m_LookRotation = Mathf.Clamp(m_LookRotation, -90, 90);
-        }
-        
-        // New player input (Walk: W A S D)
-        if(playerInput.actions["Movement"].triggered)
-        {
-            Move();
-            Debug.Log("New player input (Walk: W A S D)");
-        }
-        
-        //Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
-        //Vector3 walk = new Vector3(inputWalk.x, 0, inputWalk.y);
-        //walk = walk.x * transform.right + walk.z * transform.forward;
-        //walk.y = 0f;
-        //controller.Move(walk * Time.deltaTime * Speed);
+        }     
 
-        /*
-        // New player input (Run)
-        if (playerInput.actions["Run"].triggered)
+        if (jumpAction.action.triggered)
         {
-            Speed = RunSpeed;
-            Debug.Log("New player input (Run true)");
+            m_TestJump(jumpAction.action.GetBindingDisplayString());
+            Debug.Log("Jump");
         }
-        if (!playerInput.actions["Run"].triggered)
-        {
-            Speed = OriginalSpeed;
-            Debug.Log("New player input (Run false)");     
-        }
-        */
 
-        // New player input (Jump)    
-        if (playerInput.actions["Sheet"].triggered && Animator.GetBool("grounded")) 
-        {
-            m_TestJump();
-            Debug.Log("New player input (Jump)");
-        }
-       
+        Vector3 down = transform.TransformDirection(Vector3.down) * groundCheckDistance;
+        Debug.DrawRay(transform.position, down, Color.green);
     }
 
-    private void LateUpdate()
+     void Move()
+     {
+        Vector2 movementInput = movementAction.action.ReadValue<Vector2>();
+
+        // Get the camera's forward direction without any consideration for up/down rotation
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f; // Ensure the direction is parallel to the ground
+
+        // Calculate movement in world space based on the camera's forward direction
+        Vector3 movement = cameraForward * movementInput.y + Camera.main.transform.right * movementInput.x;
+
+        // Apply movement with speed and run multiplier
+        float speedMultiplier = runAction.action.ReadValue<float>() > 0.5f ? runMultiplier : 1f;
+        Vector3 targetVelocity = movement.normalized * moveSpeed * speedMultiplier;
+
+        //// Apply a damping force on the x and z axes
+        //float xZDampingFactor = 2f; // Adjust the damping factor as needed
+        //Vector3 dampingForce = new Vector3(-playerRigidbody.velocity.x, 0f, -playerRigidbody.velocity.z) * xZDampingFactor;
+        //playerRigidbody.AddForce(dampingForce, ForceMode.Acceleration);
+
+        // Set the target velocity as the desired velocity
+        playerRigidbody.velocity = new Vector3(targetVelocity.x, playerRigidbody.velocity.y, targetVelocity.z);
+
+    }
+
+    void m_TestJump(string jumpButton)
     {
-        CamHolder.transform.eulerAngles = new Vector3(m_LookRotation, CamHolder.transform.eulerAngles.y, CamHolder.transform.eulerAngles.z);
+
+        // Apply jump force
+        playerRigidbody.AddForce(Vector3.up * jumpForce);
+
+        // Set jumping flag to true
+        isJumping = true;
+
+        // Log the jump button
+        Debug.Log("Jump button pressed: " + jumpButton);
+
+        Invoke(nameof(ResetJump), 0.1f);
+
 
     }
-
-    void Run()
+    void ResetJump()
     {
-        //if (Input.GetKey(KeyCode.LeftShift))
-
-        if (playerInput.actions["Run"].triggered == true)
-        {
-            Speed = RunSpeed;
-            Debug.Log("New player input (Run true)");
-            Debug.Log("True Speed = " + Speed);
-        }
-        if (!playerInput.actions["Run"].triggered == false)
-        {
-            Speed = OriginalSpeed;
-            Debug.Log("New player input (Run false)");
-            Debug.Log("False Speed = " + Speed);
-        }
+        isJumping = false;
     }
-
-    void Move()
-    {
-        // New player input (Run)
-        Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
-        Vector3 currentVelocity = Rb.velocity;
-        Vector3 walk = new Vector3(m_Move.x, 0, m_Move.y);
-        walk *= Speed;
-
-        walk = transform.TransformDirection(walk);
-        Vector3 velocityChange = (walk - currentVelocity);
-        velocityChange = new Vector3(velocityChange.x, -0.65f, velocityChange.z);
-
-        //Find target velocity
-        //Vector3 currentVelocity = Rb.velocity;
-        //Vector3 targetVelocity = new Vector3(m_Move.x, 0, m_Move.y);
-        //targetVelocity *= Speed;
-
-        //Align direction
-        //targetVelocity = transform.TransformDirection(targetVelocity);
-
-        //Calculate forces 
-        //Vector3 velocityChange = (targetVelocity - currentVelocity);
-
-        //Limit force
-        Vector3.ClampMagnitude(velocityChange, MaxForce);
-
-        Rb.AddForce(velocityChange, ForceMode.VelocityChange);
-
-        //Vector2 inputWalk = playerInput.actions["Movement"].ReadValue<Vector2>();
-        //Vector3 walk = new Vector3(inputWalk.x, 0, inputWalk.y);
-        //walk = walk.x * transform.right + walk.z * transform.forward;
-        //walk.y = 0f;
-        //controller.Move(walk * Time.deltaTime * Speed);
-    }
-
-    void Jump()
-    {
-        Vector3 junpForcesVector3 = Vector3.zero;
-
-        if (Animator.GetBool("grounded"))
-        {
-            junpForcesVector3 = Vector3.up * JumpForce;
-        }
-
-        Rb.AddForce(junpForcesVector3, ForceMode.VelocityChange);
-    }
-
-    void m_TestJump()
-    {
-        Vector3 junpForcesVector3 = Vector3.zero;
-
-        // New player input   
-        if (playerInput.actions["Sheet"].triggered && Animator.GetBool("grounded") == true)
-        {
-            junpForcesVector3 = Vector3.up * JumpForce;
-        }
-        Rb.AddForce(junpForcesVector3, ForceMode.VelocityChange);
-        
-    }
-
 }
