@@ -137,16 +137,11 @@ public class PlayerScript : MonoBehaviour
         float speedMultiplier = runAction.action.ReadValue<float>() > 0.5f ? runMultiplier : 1f;
         Vector3 targetVelocity = movement.normalized * moveSpeed * speedMultiplier;
 
-        //// Apply a damping force on the x and z axes
-        //float xZDampingFactor = 2f; // Adjust the damping factor as needed
-        //Vector3 dampingForce = new Vector3(-playerRigidbody.velocity.x, 0f, -playerRigidbody.velocity.z) * xZDampingFactor;
-        //playerRigidbody.AddForce(dampingForce, ForceMode.Acceleration);
-
         // Set the target velocity as the desired velocity
         playerRigidbody.velocity = new Vector3(targetVelocity.x, playerRigidbody.velocity.y, targetVelocity.z);
 
     }
-
+   
     void m_TestJump(string jumpButton)
     {
 
@@ -160,9 +155,8 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("Jump button pressed: " + jumpButton);
 
         Invoke(nameof(ResetJump), 0.1f);
-
-
     }
+
     void ResetJump()
     {
         isJumping = false;

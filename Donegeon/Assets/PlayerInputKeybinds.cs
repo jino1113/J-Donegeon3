@@ -78,8 +78,19 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""bc32db8e-d4d7-4c99-b54b-a7fad32fd7bd"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""joystick"",
+                    ""action"": ""Sheet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""99628613-9feb-4385-bb42-1e265f1c8492"",
-                    ""path"": ""<Pointer>/delta"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -143,12 +154,78 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""53b009ce-30cf-4a38-91cb-21dd02bc8996"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""087fb073-de56-4c0f-a166-4fa0a8dabc06"",
+                    ""path"": ""<Joystick>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""44335095-e2da-4051-aee1-525247513391"",
+                    ""path"": ""<Joystick>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""bb0c4ca7-a4a7-4ae3-a3ff-ed60b66fd263"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9458ee8c-148a-4420-8aae-c8cae96a4069"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""234758a6-141e-4a23-b8df-4022efa0f0ea"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""630da190-58ee-4cfa-961d-65d6f929753b"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""joystick"",
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -174,9 +251,15 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""controller"",
-            ""bindingGroup"": ""controller"",
-            ""devices"": []
+            ""name"": ""joystick"",
+            ""bindingGroup"": ""joystick"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<HID::Microntek              USB Joystick          >"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -307,13 +390,13 @@ public partial class @PlayerInputKeybinds : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardandMouseSchemeIndex];
         }
     }
-    private int m_controllerSchemeIndex = -1;
-    public InputControlScheme controllerScheme
+    private int m_joystickSchemeIndex = -1;
+    public InputControlScheme joystickScheme
     {
         get
         {
-            if (m_controllerSchemeIndex == -1) m_controllerSchemeIndex = asset.FindControlSchemeIndex("controller");
-            return asset.controlSchemes[m_controllerSchemeIndex];
+            if (m_joystickSchemeIndex == -1) m_joystickSchemeIndex = asset.FindControlSchemeIndex("joystick");
+            return asset.controlSchemes[m_joystickSchemeIndex];
         }
     }
     public interface IPlayerActions
